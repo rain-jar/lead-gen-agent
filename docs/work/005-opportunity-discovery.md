@@ -1,6 +1,6 @@
 # 005 — Opportunity Discovery (Slice 3)
 
-- Status: **Approved — 2026-11-14 by Raj** (America/Toronto), with the decisions in "Decisions (approved 2026-11-14)" below. Implementation is authorized within this scope and the spend caps. Commit, push, deploy, and purchases are **not** authorized.
+- Status: **Complete pending A10.** Raj approved closure on 2026-11-14 (America/Toronto) and accepted precision 16/25, because discovery's job is to find candidates and later stages filter them. Official gates A1a, A2a, A2b, A3, A4, A5, A6, A7, A8 and A9 pass on saved responses. Source and documentation were committed locally after Raj's review request; no push. A10 (first frozen held-out weekly set, about early December) is still open. Carry-forward rules for Slices 4 and 6 are in the Closure note below.
 - Proposal depth and reason: Standard. This is the first product-pipeline code. It sets the opportunity record contract that Slices 4–7 consume, and it makes recurring paid search calls. It handles no private data and deploys nothing.
 - Source requirements / milestone: `docs/PROJECT.md` §2 (geography, date window, edition integrity), §4 (discovery strategy, provider abstraction, opportunity model), §6 (evaluation), §7 Slice 3; `docs/STATUS.md`; work records 002 (+ Amendment A), 003 (benchmark v2), and 004 (lead mix, L2 watch list, L4 evidence findings); Slice 2 run `artifacts/search-provider/20261114T131952Z/` (`report.md`, `judgments/recall_after_first_pass.md`, `founder_reachability_spike.md`, `founder_reachability_replay.md`).
 - Decisions this record relies on (Raj, 2026-11-14): Exa primary, Serper fallback, Brave dropped (D16, to be recorded in canonical docs by Codex); amendment 004 lead mix; student capstone teams are not founders unless pitching a venture.
@@ -146,7 +146,7 @@ Small-n caveat: 14 eligible editions, so one edition = 7.1 points overall, 12.5 
 | ID | Criterion | Target |
 | --- | --- | --- |
 | A1 | **Gate before any live spend.** Offline dry run on Slice 2's saved Exa + Serper responses (no spend; Brave excluded): v2 eligible editions present as a correctly keyed candidate | ≥ 9/14 overall, ≥ 6/7 live-CA (= Slice 2 Exa after first pass; normalization must not lose what search found) |
-| A2 | Fresh live run (Canada + US phases): candidate-level union edition recall on v2 | ≥ 9/14 overall and ≥ 6/7 live-CA (no regression). Reported, not gating: UdeM Demoday, and US editions (were 0/2) |
+| A2 | *Restated by the approved 2026-11-14 A2 amendment (below).* Fresh live run: **A2a** v2 live Canadian editions returned by search; **A2b** live Canadian editions kept as candidates with no wrong city or year. Replay and US: report returned-by-search and kept-or-correctly-excluded | A2a ≥ 6/7 and A2b ≥ 6/7. Reported, not gating: overall, replay and US splits, UdeM Demoday |
 | A3 | Window classification with `reference_date=2026-11-14`: surfaced v2 live eligible editions | 100% `in_window` or `pending_date`, 0 excluded |
 | A4 | Surfaced v2 date traps (McMaster live view 2026-11-18, Startupfest 2027-07-07, Velocity 2026-09-12) | 0 marked `in_window` |
 | A5 | Edition integrity on adjudicated v2-related records (Arena 2026/2027, NEXT AI Toronto/Montréal, Startup TNT Edmonton/Calgary) | 0 records merging different years or cities |
@@ -173,7 +173,8 @@ Small-n caveat: 14 eligible editions, so one edition = 7.1 points overall, 12.5 
   - edition key and merge (city split, year split, conflict flag, mirror merge);
   - Serper fallback F1/F2 with mocked Exa and the fallback cap;
   - cost-cap stop;
-  - watch-list `recheck_date` rules.
+  - watch-list `recheck_date` rules;
+  - event-date role selection (deadline, posted, byline, recap and ambiguous dates), year resolution from explicit dates, cross-site dedupe, A2a/A2b scoring and the seeded precision sample, all on made-up text (A2 amendment).
 - Offline integration: A1 and A9 on Slice 2's saved responses.
 - One live run after approval of this record's spend: A2–A8.
 - Full diff review, `git diff --check`, and a key-value scan as in Slice 2.
@@ -212,7 +213,250 @@ Not material to this slice beyond existing handling. Keys are read from the igno
 - User approval / date / proposal revision or scope: **Approved by Raj on 2026-11-14 (America/Toronto)**, for this record with decisions D3-1 to D3-7.
 - Conditions: A1 (offline replay) must pass before any live API spend. Spend stays within US$1.25 per run and US$4 for the slice. The snippet cost check (D3-1) runs before snippets are enabled. Prerequisite: the 004 / Slice 2 close-out documentation pass is done first.
 - Separately authorized external actions: Exa and Serper API spend within the caps above. Commit, push, deploy, and purchases are **not** authorized.
-- Material amendments / renewed approval: none.
+- Material amendments / renewed approval: the A1 amendment and the A2 amendment, both approved by Raj on 2026-11-14 (America/Toronto) and recorded below.
 
-## Results (after implementation)
-Pending.
+## Approved A1 amendment — 2026-11-14 (America/Toronto)
+
+Raj approved an independent-review correction to the gate. **A1a** replaces A1 as the gate before live spend: saved Slice 2 Exa + Serper replay (no Brave) must retain at least 9/14 eligible v2 editions overall and 6/7 live Canadian as candidates, with no credited edition assigned a wrong city or year on any record. Unknown city/year is allowed and must be reason-coded and sent downstream. Report Exa-only beside the union. **A1b** is exact city-plus-edition-year matching, reported in Slice 3; it becomes a gate after Slice 4 page fetching. A9 remains a gate. Other criteria and caps are unchanged. The prior 5/14 result used A1b-like scoring and overstates lost candidate retention.
+
+Generic implementation rules approved in the amendment: freeze a Canada city/province and US metro list and parser before rescoring; infer city from page title/URL/snippet (query scope only a hint); strip site/platform name from titles; ignore past champion/winner and copyright years; merge by canonical URL then site/event/year without combining conflicting city/year; preserve source provenance; retain unknowns; emit one watch row per edition with multiple reasons, distinguishing unknown and pending dates. The scorer stays in `scripts/`, folds city accents/case, uses R3 replay reference dates, and reports A1a/A1b, union/Exa-only, and distinct URLs. Raj authorized these repairs and the existing bounded live evaluation after A1a and A9 pass. No commit, push, deployment or purchase was authorized.
+
+Frozen generic geography/parser inputs for this rescore: `CA_CITIES`, `CA_PROVINCES`, `US_METROS`, `CITY_ALIASES`, `clean_event_name`, `page_city`, and `event_years` in `src/leadgen/discovery/core.py` as written before the amended replay. They contain no benchmark event names, domains, people, or URLs. Source fields are examined in title → URL path → snippet order; no query city is used in the key. A missing city/year is recorded as unknown. Champion/winner and copyright clauses are excluded from year extraction. Further changes require a dated result entry, not silent tuning against v2.
+
+## Approved A2 amendment and date/dedupe fixes — 2026-11-14 (America/Toronto)
+
+Raj approved this amendment on 2026-11-14 (America/Toronto). An independent review of the live run found that search recall had not regressed: Exa returned 9/14 v2 editions overall and 6/7 live Canadian, the same as Slice 2. The A2 drop to 6/14 came from date logic (UBC was excluded as `past` from its post and deadline dates, although its text gives the event date) and from A2's definition, which also penalized correct exclusions.
+
+**Restated A2** (A1a is unchanged):
+- **A2a:** v2 live Canadian editions returned by search, meaning a cited or first-pass same-site URL appears in an HTTP 200 Exa or Serper result of the run. Target **≥ 6/7**.
+- **A2b:** v2 live Canadian editions kept as candidates with no wrong city or year on any record. Unknown city or year is allowed. Target **≥ 6/7**.
+- **Replay and US editions:** report "returned by search" and "kept or correctly excluded". A correct `past` or `too_soon` exclusion is not penalized.
+
+`scripts/score_discovery.py` computes A2a, A2b and kept-or-correctly-excluded from the run's `raw.ndjson` and writes `a2_pass` to `score.json`.
+
+**Approved generic fixes:**
+1. **Event-date selection.** Deadline, application, posted, updated and byline dates are never event dates. The parser picks the earliest cued event date at least 7 days after the reference date. When conflicting dates remain and none is cued, the window is `unknown` with reason `date_ambiguous` instead of a guess.
+2. **No past-to-future year inference.** A yearless date gets no inferred year when the text is a recap or carries an earlier explicit year.
+3. **Year resolution.** A multi-year conflict resolves when explicit full event dates or year headings agree on one year, with past-winner and champion lines excluded. The record is flagged `year_resolved_by_explicit_date`.
+4. **Cross-site dedupe.** Records from different sites merge only with the same known city, the same full event date, no conflict flags, compatible years and at least two shared meaningful name tokens.
+5. **A2 restatement** as above.
+6. **Precision sample.** `scripts/precision_sample.py` draws a fixed, seeded sample of 25 `in_window` candidates (seed `20261114`) into `precision_sample.csv` with blank review columns. It is report-only.
+
+**Additions made during implementation, within the scope above and recorded for review:** a same-site merge for pages that share a host, an identical full event date and at least two meaningful name tokens; and a narrower past-clause rule, so that "champion" no longer matches "championship". Every rule is tested on made-up text. Discovery code contains no v2 names, domains, people or URLs, and a test now checks this against the frozen v2 file. No commit, push, deployment, purchase, API call or spend was authorized or made.
+
+## Historical results: initial offline gate (superseded)
+
+Tests were written first in `tests/test_discovery.py`. Initial local code is in `src/leadgen/discovery/`, with a separate scorer in `scripts/score_discovery.py`. The saved Slice 2 Exa and Serper responses were replayed, excluding Brave. The offline run is `artifacts/discovery/a1-replay/` and its `score.json` is reviewable. No Slice 3 keys were loaded or API calls made; Slice 3 spend is **US$0**.
+
+| Criterion | Observed result |
+| --- | --- |
+| A1 | **Fail:** 5/14 correctly keyed eligible editions overall and 3/7 live CA, below 9/14 and 6/7. Replay 2/6; US 0/2. Search URLs matched more cases, but city/year extraction and keying lost NEXT AI, uOttawa, Arena, and McMaster. |
+| A2–A8 | Not run: the A1 gate prohibits the live evaluation. No fresh recall, latency, fallback, or paid cost observations. |
+| A9 | Pass for the offline run: a second processing pass with the same run ID produced byte-identical candidates, watch list, and excluded files. |
+| A10 | Not run: no held-out weekly set is frozen yet. |
+
+The replay produced 540 candidates, 349 excluded records, and 660 watch items (multiple reasons can apply to one candidate). Candidate windows: 61 in-window, 36 pending date, 18 too far, 425 unknown. Lineups: 95 announced hints, 31 pending, 414 unknown. Page kinds: 198 event edition, 119 event series, 36 listing/aggregator, 39 news, 148 social. Watch reasons: 150 alternate source, 461 date pending, 18 enters window later, 31 lineup pending. These are **diagnostics only**: broad classification and national-query city inference are still too weak. The saved replay currently uses one 2026-11-14 reference date; R3-specific replay window evaluation is not yet implemented. The second-hop family, live adapters, candidate dedupe quality, and A2–A8 remain unfinished.
+
+Nine focused tests pass (six new rule/orchestration tests and three Slice 2 tests). `git diff --check` passes. A local scan found zero key values in the offline run artifacts and zero Brave sources in candidate output. The A1 miss is a real blocker to spending, so the approved live run was not attempted. Exa snippet pricing and `costDollars` were not checked because the live gate was not reached. The next implementation step is to fix city/edition extraction and R3 replay handling from generic evidence, rerun A1 and A9, then proceed to current-price checks and the bounded live run only if A1 passes. No benchmark names or domains may enter discovery code/config.
+
+### Historical amended replay result (superseded by URL-merge repair)
+
+The amended offline run is `artifacts/discovery/a1-amended/` (`run.json`, candidate/watch/excluded JSONL, `score.json`). **A1a fails:** Exa+Serper union retains 8/14 overall and 5/7 live CA; Exa-only retains 9/14 and 6/7. The union loses Arena because Serper snippets produce wrong city/year records for that cited URL; the rule forbids credit when *any* record has a wrong value. Union replay is 3/6 and US 0/2; Exa-only replay is 3/6 and US 0/2. **A1b, report only:** union 2/14 overall, 1/7 live CA, 1/6 replay, 0/2 US; Exa-only 1/14 overall, 0/7 live CA, 1/6 replay, 0/2 US. One edition is 7.1 points overall and 14.3 points among live Canadian cases. Six replay benchmark editions are in-window when evaluated against their individual R3 reference dates; the discovery replay still labels candidates with a single 2026-11-14 reference date, so candidate-level R3 handling remains unfinished.
+
+The following table covers the nine v2 editions credited to Exa or Serper in Slice 2. Counts are actual candidate records that contain a credited source URL (the same URL can appear in multiple records). `?` means unknown. The first-pass adjudication labels are applied by the scorer, not embedded in discovery code.
+
+| Edition | Before: records; cities; years | After: records; cities; years |
+| --- | --- | --- |
+| NEXT AI Montréal Open House | 1; Montreal; ? | 1; Montréal; ? |
+| UBC Venture Showcase | 2; Vancouver; 2026 | 2; ?; 2026 |
+| Startup TNT Calgary | 2; Calgary; 2026/? | 2; Calgary; 2026/? |
+| uOttawa Engineering Pitch | 2; Ottawa/?; ? | 1; ?; ? |
+| Arena 2027 | 17; nine query cities/?; 2026/2027/? | 20; Calgary/?; 2026/2027/? |
+| U of T Desjardins Prize | 10; seven query cities/?; 2027/? | 1; ?; 2027 |
+| SOAR 2026 | 2; Saskatoon; 2026/? | 2; ?; 2026/? |
+| McMaster Startup Survivor | 1; ?; ? | 1; ?; ? |
+| Startup World Cup Ottawa | 3; Ottawa; 2026/? | 3; Ottawa; 2026/? |
+
+The Arena result exposes a remaining merge defect: 20 records containing its cited URL survive, although the scorer's deduplicated row reports four identities. Some Serper snippets mention Calgary and 2026 context around the Arena page. This is not evidence that the Arena edition is in Calgary or 2026. The A1a failure is therefore substantive, and the gate remains closed.
+
+Amended replay totals: **442 candidates, 426 distinct candidate URLs, 281 excluded, 407 watch rows** (one per dedupe key; 1,030 reason memberships). The prior run had 540 candidates and 442 distinct URLs. Watch memberships by reason: alternate source 137, city unknown 272, date pending 26, date unknown 346, enters window later 14, lineup pending 32, year unknown 203. Candidate windows: 45 in-window, 29 pending date, 14 too far, 354 unknown. The individual watch rows list their edition key and reasons in `watchlist.jsonl`; `run.json` has the reason counts. These figures are provisional diagnostics because edition identity and merge are not yet sound.
+
+**A9 passes offline:** reprocessing with the same run ID gave byte-identical candidate, watch, and excluded outputs. Fourteen focused tests pass, `git diff --check` passes, and a local artifact scan found zero API key values. A2–A8 and A10 were not run; there were no Slice 3 provider requests, latency observations, snippet cost test, or spend (**US$0**). Per the approved stop rule, no live evaluation was attempted. Repair the generic Arena snippet/merge logic and candidate-level R3 handling, then freeze and rerun A1a/A9 before checking prices or making API calls. Slice 3 code and this record remain uncommitted for Raj's review.
+
+### Approved URL-merge repair and completed live evaluation (2026-11-14)
+
+Raj approved one more generic repair, keeping A1a and all cost limits unchanged. `merge_candidates` now always consolidates a canonical URL, resolves conflicting city/year/date to unknown with explicit flags, then merges compatible same-site pages only with a unique target. `page_city` uses the full title and URL path and requires a venue phrase or city/province pattern in snippets. A true Exa-only replay filters Serper *before* normalization. These changes use no v2 names, domains, people or URLs in discovery code/config/tests.
+
+The saved-response replay now **passes A1a and A9**. A1a union: 9/14 overall, 6/7 live Canada, 3/6 replay, 0/2 US; true Exa-only: the same. A1b (report only) union and true Exa-only: 2/14 overall, 1/7 live Canada, 1/6 replay, 0/2 US. No credited record has a wrong city or year. The Arena is one candidate with unknown city/year and a year-conflict flag; Desjardins is one candidate with Toronto and unknown year. The replay has 415 union candidates, 428 distinct candidate URLs, 402 watch rows, 36 year-conflict and 7 date-conflict flags. The true Exa-only replay has 251 candidates, 260 distinct URLs, 246 watch rows, and 4 year-conflict flags. Candidate, watch, and excluded files were byte-identical on repeated processing of each view. One edition changes overall recall by 7.1 points and live-Canada recall by 14.3 points.
+
+| Slice 2 credited edition | Before repair: records; city; year | After repair: records; city; year |
+| --- | --- | --- |
+| NEXT AI Montréal Open House | 1; Montréal; ? | 1; Montréal; ? |
+| UBC Venture Showcase | 2; ?; 2026 | 2; ?; 2026 |
+| Startup TNT Calgary | 2; Calgary; 2026/? | 2; Calgary; 2026/? |
+| uOttawa Engineering Pitch | 1; ?; ? | 1; ?; ? |
+| Arena 2027 | 20; Calgary/?; 2026/2027/? | **1; ?; ?** (year conflict) |
+| U of T Desjardins Prize | 1; ?; 2027 | **1; Toronto; ?** |
+| SOAR 2026 | 2; ?; 2026/? | 2; ?; 2026/? |
+| McMaster Startup Survivor | 1; ?; ? | 1; ?; ? |
+| Startup World Cup Ottawa | 3; Ottawa; 2026/? | 3; Ottawa; 2026/? |
+
+Official prices checked before the live call: [Exa Auto Search](https://exa.ai/pricing) US$7/1,000 for up to ten results with highlights included; [Serper Starter](https://serper.dev/) US$1/1,000 queries. The first Exa request used `contents.highlights` and reported `costDollars.total = US$0.007`, so highlights stayed enabled (incremental price observed: US$0). No summary, answer, research, date filter, or domain filter was used. The live query file SHA-256 is in `artifacts/discovery/live-eval-20261114-network/run.json`.
+
+The first sandboxed network attempt had 67 Exa and 66 Serper connection failures, no HTTP successes, and was aborted. Its conservative reserved list price was US$0.535, with no response-reported charges. The network-enabled evaluation made **130 successful Exa requests**, zero retries and zero Serper calls; each query's Exa result set had at least one event-like page, so neither F1 nor F2 fired. It ran 48 English core, 24 English early, 25 French, 7 second-hop, 6 US national and 20 US metro queries. Exa reported **US$0.910**; list-price reservation was also US$0.910. Combined conservative reservation for both attempts is US$1.445 against the US$4 slice ceiling; each run stayed under US$1.25. Exa total request latency was 81.064 seconds, median 0.412 seconds. Actual Serper charge was zero for the successful run; the failed sandbox attempts reported no provider charges.
+
+Processing of the saved live NDJSON initially failed because `str.splitlines()` treats an embedded Unicode line separator inside a JSON string as a record break. Parsing now splits only on LF. The raw responses were processed offline with no extra API calls; a focused regression test covers this. The live run output is `artifacts/discovery/live-eval-20261114-network/` (`raw.ndjson`, `queries.tsv`, `run.json`, candidate/watch/excluded files, `score.json`, `evaluation.json`).
+
+| Criterion | Observed live result |
+| --- | --- |
+| A2 | **Fail:** fresh v2 candidate recall 6/14 overall, 5/7 live CA, 1/6 replay, 0/2 US versus 9/14 and 6/7 targets. Only Exa was called; search index drift and normalization both remain plausible contributors. Unjudged new URLs are not credited, so this is a known-source lower bound. |
+| A3 | **Fail:** five live eligible editions surfaced; Arena's window is `unknown`, so only four of five are `in_window` or `pending_date`. None of these five were excluded. |
+| A4 | **Pass on cited-source traps:** McMaster live view was excluded `too_soon`; Startupfest was `too_far`; Velocity was `unknown` as a candidate and `past` as an excluded record. None was `in_window`. |
+| A5 | **Partially checked:** conflicting same-URL evidence resolves to unknown with flags; no wrong city/year was credited on A1a replay. Full adjudication of all live cross-page city/year joins remains open. |
+| A6 | **Fail:** Startup TNT Calgary has two candidate records containing cited edition pages. Other surfaced eligible editions have one each. |
+| A7 | **Pass on measured parts:** no program page was emitted `in_window`; all 66 social candidates had `needs_alternate_source` and an alternate-source watch reason. Bot-blocked sources require separate adjudication. |
+| A8 | **Pass:** US$0.910 response-reported Exa cost, below US$1.25/run and US$4/slice; 130 requests, latency and query hash logged; artifact scan found zero key values and zero Brave records. |
+| A9 | **Pass:** replay and live raw-response reprocessing produced byte-identical candidate, watch and excluded files with the same run ID. |
+| A10 | Not run; no frozen weekly held-out set exists. |
+
+Live diagnostics: 414 candidates, 419 distinct candidate URLs, 410 excluded, **375 watch rows** (one per dedupe key, 877 reason memberships). Candidate windows: 172 `in_window`, 43 `pending_date`, 58 `too_far`, 141 `unknown`. Lineups: 96 announced hints, 166 pending, 152 unknown. Page kinds: 287 event edition, 10 event series, 27 listing, 24 news, 66 social. Watch reasons: alternate source 64, city unknown 224, date pending 43, date unknown 141, enters window later 57, lineup pending 163, year unknown 185. Query-family candidate-key counts are in `evaluation.json` (core 163, early 96, French 65, second-hop 28, US national 34, US metro 108); these are provisional edition counts because dedupe still fails A6. Candidate conflict flags: 172 year, 10 date, 1 city. Nineteen focused tests passed before the run, and twenty passed after the NDJSON fix; `git diff --check` passed. No commit, push, deployment, purchase or further paid evaluation was performed.
+
+Remaining work before completing Slice 3: improve fresh candidate recall and date handling, eliminate the Startup TNT duplicate, audit blocked sources and the A5 city/year joins, and test against a frozen held-out weekly set when available. Resolving years from explicit dates or mapping institutions to cities is deferred to Slice 4 as an option, per Raj's latest instruction; it was not added to this run. *(Superseded for years: the A2 amendment below approved year resolution from explicit event dates. Institution-to-city mapping remains deferred.)*
+
+## Results: A2 amendment fixes, reprocessed for US$0 (2026-11-14, current)
+
+All results below come from offline reprocessing of saved responses. There were no API calls and no spend (**US$0**). Inputs:
+- Slice 2 replay: `artifacts/search-provider/20261114T131952Z/raw.ndjson`, SHA-256 prefix `ec3a169f`.
+- Live responses: `artifacts/discovery/live-eval-20261114-network/raw.ndjson`.
+
+Reference date: 2026-11-14. Outputs:
+- `artifacts/discovery/a1-fix3-union/`
+- `artifacts/discovery/a1-fix3-exa/`
+- `artifacts/discovery/live-reprocess-20261114-fix3/`
+
+Each has a `-repeat` twin. Verification ran on Raj's Mac with the repo's own Python 3.12.6 and Pydantic 1.10.19.
+
+"Before" is the previous code on the same inputs. Before-values for A2a and A2b come from running the new scorer on the earlier live output.
+
+| Criterion | Before | After | Result |
+| --- | --- | --- | --- |
+| A1a union (replay) | 9/14 overall, 6/7 live CA, 3/6 replay, 0/2 US | 9/14, 6/7, 3/6, 0/2; 0 wrong city/year | **Pass** (unchanged) |
+| A1a true Exa-only | 9/14, 6/7, 3/6, 0/2 | 9/14, 6/7, 3/6, 0/2 | **Pass** (unchanged) |
+| A1b union / Exa-only (report only) | 2/14 (1/7 live CA) / 2/14 (1/7) | 3/14 (2/7) / 2/14 (1/7) | Report only |
+| A2a live CA returned by search | 6/7 (9/14 overall) | 6/7 (9/14 overall) | **Pass** |
+| A2b live CA kept, no wrong city/year | 5/7: UBC excluded `past` | 6/7 (7/14 overall) | **Pass** |
+| Replay: returned / kept or correctly excluded | 3/6 / 3/6 | 3/6 / 3/6 | Report only |
+| US: returned / kept or correctly excluded | 0/2 / 0/2 | 0/2 / 0/2 | Report only |
+| A3 surfaced live eligible editions in window | 4 of 5: Arena `unknown` | 6 of 6 `in_window`, 0 excluded | **Pass** |
+| A4 date traps | 0 `in_window` | 0 `in_window`: McMaster excluded `too_soon`, Startupfest `too_far`, Velocity `unknown` plus excluded `past` | **Pass** |
+| A6 one record per surfaced edition | Startup TNT had 2 records | Every surfaced live edition has 1 record | **Pass** |
+| A5 official (v2 city/year integrity) | Full live adjudication was open | 0 v2-related records merge different years or cities: Arena is 2027 with city unknown; NEXT AI Toronto and Montréal are separate; Startup TNT Calgary and Edmonton are separate | **Pass** (see the A5 section below) |
+| A7 measured parts | 0 programs `in_window`; 66 social, all flagged | 0 programs `in_window`; 98 social + 2 Meetup, all with `needs_alternate_source` and a watch reason | **Pass** (full blocked-source audit now closed; see the A7 section below) |
+| A9 determinism | Pass | Candidate, watch, excluded and run files byte-identical with the same run ID for all three views | **Pass** |
+
+The live view of the nine Slice 2-credited editions (records containing a credited URL; city; year; window; `?` means unknown):
+
+| Edition | Before | After |
+| --- | --- | --- |
+| NEXT AI Montréal Open House | 1; Montréal; 2026; in window | 1; Montréal; 2026; in window |
+| UBC Venture Showcase | 0; excluded `past` | **1; ?; 2026; in window** |
+| Startup TNT Calgary | **2**; Calgary; 2026; in window | **1**; Calgary; 2026; in window (cross-site merge) |
+| uOttawa Engineering Pitch | 1; ?; 2026; in window | 1; ?; 2026; in window |
+| Arena 2027 | 1; ?; ?; `unknown` | **1; ?; 2027; in window** (`year_resolved_by_explicit_date`) |
+| U of T Desjardins Prize | 1; Toronto; ?; in window | 1; Toronto; **2027**; in window |
+| SOAR 2026 (replay) | 1; ?; ?; `unknown`, plus one excluded `past` | unchanged |
+| McMaster Startup Survivor (replay) | 0; excluded `too_soon` against 2026-11-14 (correct) | unchanged |
+| Startup World Cup Ottawa (replay) | 0; excluded `past` (correct) | unchanged |
+
+On the A1a replay union, only two editions changed:
+- Arena moved from 1; ?; ? to 1; ?; 2027 in window.
+- Desjardins moved from 1; Toronto; ? to 1; Toronto; 2027.
+
+The replay still has multiple records for UBC (2), Startup TNT (2), SOAR (2) and Startup World Cup Ottawa (3). A6 was measured on the live run.
+
+**Live totals before → after:**
+
+| Measure | Before | After |
+| --- | --- | --- |
+| Candidates | 414 | 485 |
+| Distinct candidate URLs | 419 | 501 |
+| Excluded | 410 | 325 |
+| Watch rows | 375 | 440 |
+| Watch reason memberships | 877 | 1,010 |
+
+Exclusion reasons before → after:
+- `past`: 281 → 212
+- `too_soon`: 55 → 41
+- `program_without_dated_event`: 54 → 52
+- `non_event`: 20 → 20
+
+Candidate windows after: 199 `in_window`, 40 `pending_date`, 30 `too_far`, 216 `unknown`.
+
+Other live diagnostics after:
+- Lineups: 132 announced, 188 pending, 165 unknown.
+- Page kinds: 328 event edition, 13 event series, 27 listing, 19 news, 98 social.
+- Watch reasons: alternate source 99, city unknown 262, date ambiguous 26, date pending 40, date unknown 189, enters window later 29, lineup pending 188, year unknown 177.
+- Conflict flags: 159 year, 5 date, 1 city. 82 records carry `year_resolved_by_explicit_date`.
+- Query-family unique editions: core 182, early 124, French 72, second-hop 31, US national 43, US metro 124.
+
+The A1a replay union has 422 candidates, 435 distinct URLs and 408 watch rows. Exa-only has 251, 260 and 246.
+
+**Precision sample (report only).** The sample file is `artifacts/discovery/live-reprocess-20261114-fix3/precision_sample.csv`: seed `20261114`, 25 of 199 `in_window` candidates. Raj filled `raj_real_in_window_event` for all 25 rows (none blank) in the Numbers copy; those labels were copied back into the CSV. Comparison with the advisory labels is in `precision_comparison.csv`. Raj's label wins on disagreements.
+
+Final precision, using Raj's labels:
+- Real in-window events: **16/25**.
+- Canada-located (same 13 records as the advisory `advisory_in_canada=yes` set): **6/13** real.
+- Agreement with the advisory labels: **16/25**. Nine disagreements, listed below; no advisory fallback was used.
+- Among Raj's 9 "no" rows, his reasons group as: not an event (3), program not an event (2), calendar (3), press release (1).
+
+Disagreements (Raj wins; one-line rationale):
+- Pitch & Plate: Raj yes vs advisory no. Raj treats a buyer-facing food pitch as a real in-window event; the advisory was stricter about on-stage founder pitches.
+- Polsky "College Students": Raj yes vs advisory no. Raj counts the page as a real event; the stored date is still a deadline beside a listing.
+- EFVC: Raj yes vs advisory no. The 2027 competition is a real pitch event; the stored date is the application deadline.
+- Freirich: Raj yes vs advisory no. Raj counts the competition as real; the stored date is a judging or selection meeting.
+- MacEwan Ventures: Raj no vs advisory yes. Raj treats the cohort-showcase page as a program, not an event edition.
+- Must-attend Miami list: Raj yes vs advisory no. Raj counts the list as a real in-window event; it remains a third-party aggregator page.
+- TechCon SouthWest: Raj no vs advisory yes. Raj rejects a press-release source even though the conference and pitch date are real.
+- TiE Atlanta: Raj yes vs advisory no. Raj counts the program as a real event; the stored date is a mock round.
+- VEF Events: Raj no vs advisory yes. Raj treats the organiser's events list as a calendar, not a single event edition.
+
+The earlier informal sample (about 14/25 real) was a different random draw judged by a different reviewer, so it is not a measured improvement. The `geo_tier` column records the query phase, not the event's location.
+
+**A5 official result: Pass.** Full row-level judgements are in `artifacts/discovery/live-reprocess-20261114-fix3/a5_adjudication.csv` and `a5_adjudication.md`. On the v2-related records named in 005, 0 records merge different years or cities.
+
+Broader live city/year/merge audit (no 005 numeric threshold; no pass invented): 217 assigned cities, 0 wrong; 308 assigned years, 1 implausible year (`2000` taken from a statistic on a Startup TNT Summit X page); 18 merged records, of which 7 are same-site over-merges of different events (6 candidates, 1 excluded). Those over-merges happen when `clean_event_name` collapses both pages to the organiser name. Conflicting dates were cleared (`date_conflict`); no conflicting city or year was picked. A proposed follow-up threshold is 0 wrong city or year assignments and 0 merges of different events. A generic same-site name-join fix is recommended and was not applied in this pass, so the live totals and precision sample stay unchanged.
+
+**A7 result: Pass.** The audit is in `artifacts/discovery/live-reprocess-20261114-fix3/a7_audit.md`. 0 program pages were emitted as candidates. All 98 social candidates, 22 social excluded records, and 2 Meetup candidates have `needs_alternate_source`, `access_hint=alternate_needed`, and (for candidates) a watch reason `alternate_source_needed`. No Facebook, Instagram, X, SPIE, or Incapsula-type sources appeared. The live raw file has 130 Exa search responses and no event-page fetches. Candidate records have no contact fields; incidental email-like and phone-like strings in snippets were not extracted. Residuals, not fails: `twitter.com` is not in the social host list (`x.com` is; 0 hits in this run), and historically fetch-blocked hosts such as `queertech.org` are retained but not auto-tagged because there is no blocked-host list beyond social and Meetup.
+
+**Limits:**
+- UdeM Demoday and both US benchmark editions are still not found by search.
+- Cities are often unknown until Slice 4 fetches pages: 262 live watch rows carry `city_unknown`.
+- The US phase stays opt-in in normal runs and sorts after Canada.
+- Residual errors: deadlines in page headers or after weekday-time lines, program-start dates, and aggregator pages still reach `in_window`.
+
+**Leakage caution.** Fixes 1–4 were motivated by v2 traces. Several implementation details were also tuned after looking at live candidates, including rows of an earlier precision draw. The v2 and precision numbers above are therefore not clean evidence. The first frozen held-out weekly set (A10) has to confirm these gains.
+
+**Checks:**
+- 44 tests pass: 24 new, all on made-up text, including a code-leakage test against the frozen v2 file.
+- `git diff --check` passes, and the new files have no trailing whitespace.
+- A key-value scan of the new artifacts and changed code found zero values for the three configured provider keys.
+- Frozen benchmarks and the Slice 2 query file were not touched.
+- No commit, push, deployment, purchase or API call was made.
+
+**Remaining after Slice 3 closure:**
+1. A10: score the first frozen held-out weekly set once, with discovery frozen (planned for about early December).
+
+## Closure (2026-11-14, approved by Raj)
+
+Raj approved closing Slice 3, pending A10, and accepted precision **16/25**. Discovery's job is to find candidates; later stages filter them. Official A5 and A7 pass. The following rules are carried forward:
+
+1. **Calendars and listing pages** stay in as candidates, flagged as a list of events. Slice 4 (Evidence Retrieval) opens them and pulls out each event as its own candidate.
+2. **Non-events and press releases** never take a weekly slot. Slice 6 (Qualify) drops them, or sends them to the watch list if they name an organizer.
+3. **Programs and accelerators** count only through a dated demo day or pitch event, which becomes the candidate; otherwise they go on the watch list.
+
+Also carry forward, to fix early in Slice 4:
+- same-site over-merges of different events caused by organiser-name collapse;
+- add `twitter.com` to the social-site list (`x.com` is already listed);
+- drop implausible years taken from statistics (for example a `2000` parsed from a page metric).
+
+No commit, push, deployment, purchase or API call was made in this close-out.

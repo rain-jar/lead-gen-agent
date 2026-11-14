@@ -15,7 +15,7 @@ This repository package is the canonical starting point for the restarted Lead G
 - Stage 5 has started with benchmark tooling; application discovery behavior is not built yet.
 - Benchmark setup (001) and the approved v2 coverage expansion (003) are complete. Both benchmark versions are frozen.
 - Slice 2's 58-query provider run and first-pass URL judging are done. Raj approved Exa primary, Serper fallback, and dropped Brave; full pooled precision judging remains open.
-- The founder-first, organizer-fill 10-slot mix is defined in `docs/PROJECT.md` and work record 004. Slice 3 is approved in work record 005; its implementation is local and uncommitted pending review.
+- The founder-first, organizer-fill 10-slot mix is defined in `docs/PROJECT.md` and work record 004. Slice 3 is complete pending its first held-out weekly test (A10); see work record 005 for results and carry-forward issues.
 
 ## Operating cycle
 
