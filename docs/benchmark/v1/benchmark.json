@@ -1,0 +1,78 @@
+{
+  "benchmark_id": "lead-discovery-replay-v1",
+  "version": "1.0.0",
+  "status": "frozen",
+  "created_date": "2026-11-14",
+  "description": "Static replay cases. Each opportunity carries its own simulated discovery reference date; source checked dates record when supporting evidence was reviewed. This candidate is not frozen.",
+  "opportunities": [
+    {
+      "opportunity_id": "sd-founders-fight-club-2026",
+      "name": "Founders Fight Club Heavyweight Pitch Competition at San Diego Startup Week",
+      "edition": "2026",
+      "reference_date": "2026-10-28",
+      "event_date": "2026-11-06",
+      "location": {"city": "San Diego", "region": "California", "country": "US"},
+      "category": "startup pitch competition",
+      "expected_discovery": "eligible",
+      "sources": [{"url": "https://startupsd.org/news/founders-fight-club-finalists-sdsw2026/", "source_type": "official organizer finalist announcement", "checked_date": "2026-11-14", "evidence_note": "Dated October 28, 2026; identifies the November 6 event and names each pitching founder and finalist startup."}]
+    },
+    {
+      "opportunity_id": "utoronto-desjardins-2027",
+      "name": "University of Toronto Desjardins Startup Prize",
+      "edition": "2027",
+      "reference_date": "2026-11-14",
+      "event_date": "2027-03-04",
+      "location": {"city": "Toronto", "region": "Ontario", "country": "CA"},
+      "category": "university startup pitch competition",
+      "expected_discovery": "eligible",
+      "sources": [{"url": "https://entrepreneurs.utoronto.ca/for-entrepreneurs/desjardins-startup-prize-2027/", "source_type": "official organizer page", "checked_date": "2026-11-14", "evidence_note": "Identifies University of Toronto Entrepreneurship as the delivery organization, states the March 4, 2027 pitch date, describes early- and late-stage startup categories, and publishes a coordinator email."}]
+    },
+    {
+      "opportunity_id": "synapse-pitch-2027",
+      "name": "Synapse Life Science Pitch Competition",
+      "edition": "2027",
+      "reference_date": "2026-11-14",
+      "event_date": "2027-03-24",
+      "location": {"city": "Hamilton", "region": "Ontario", "country": "CA"},
+      "category": "life sciences startup pitch competition",
+      "expected_discovery": "eligible",
+      "sources": [{"url": "https://synapselifescience.com/apply/", "source_type": "official competition page", "checked_date": "2026-11-14", "evidence_note": "Lists early-stage innovators and founders as eligible participants, the March 24, 2027 showcase date, and an official application/contact route."}]
+    },
+    {
+      "opportunity_id": "mcmaster-startup-survivor-2026",
+      "name": "Startup Survivor: The Pitch Competition",
+      "edition": "2026",
+      "reference_date": "2026-11-14",
+      "event_date": "2026-11-18",
+      "location": {"city": "Hamilton", "region": "Ontario", "country": "CA"},
+      "category": "university startup pitch competition",
+      "expected_discovery": "ineligible",
+      "sources": [{"url": "https://theforge.mcmaster.ca/pitchcompetition/", "source_type": "official event page", "checked_date": "2026-11-14", "evidence_note": "Names finalists and actual pitchers and states the November 18, 2026 event date, only four days after this case's reference date."}]
+    },
+    {
+      "opportunity_id": "cornell-mark-mobius-2026",
+      "name": "Cornell Mark Mobius Pitch Competition",
+      "edition": "2026",
+      "reference_date": "2026-10-28",
+      "event_date": "2026-11-05",
+      "location": {"city": "New York City", "region": "New York", "country": "US"},
+      "category": "university startup pitch competition",
+      "expected_discovery": "eligible",
+      "sources": [{"url": "https://business.cornell.edu/centers/ccem/conference/pitch-competition/", "source_type": "official event page", "checked_date": "2026-11-14", "evidence_note": "Lists founders on finalist teams and says finalist teams pitch on November 5, but does not identify which named individual presents."}]
+    }
+  ],
+  "cases": [
+    {"case_id": "founder-sd-01", "case_type": "founder", "opportunity_id": "sd-founders-fight-club-2026", "expected_judgment": "verified", "person_name": "Kanna (Uchida) Ecklund", "venture": "Asaichi", "reason": null, "sources": [{"url": "https://startupsd.org/news/founders-fight-club-finalists-sdsw2026/", "source_type": "official finalist announcement", "checked_date": "2026-11-14", "evidence_note": "Explicitly named as the Asaichi pitching founder."}]},
+    {"case_id": "founder-sd-02", "case_type": "founder", "opportunity_id": "sd-founders-fight-club-2026", "expected_judgment": "verified", "person_name": "Susan Hartman", "venture": "Recoup Beverage Inc", "reason": null, "sources": [{"url": "https://startupsd.org/news/founders-fight-club-finalists-sdsw2026/", "source_type": "official finalist announcement", "checked_date": "2026-11-14", "evidence_note": "Explicitly named as the Recoup co-founder pitching at the event."}]},
+    {"case_id": "founder-sd-03", "case_type": "founder", "opportunity_id": "sd-founders-fight-club-2026", "expected_judgment": "verified", "person_name": "Navy McKee", "venture": "Kai Pono Solutions", "reason": null, "sources": [{"url": "https://startupsd.org/news/founders-fight-club-finalists-sdsw2026/", "source_type": "official finalist announcement", "checked_date": "2026-11-14", "evidence_note": "Explicitly named as the Kai Pono Solutions CEO and founder pitching at the event."}]},
+    {"case_id": "founder-sd-04", "case_type": "founder", "opportunity_id": "sd-founders-fight-club-2026", "expected_judgment": "verified", "person_name": "D’Artagnan Osborne", "venture": "Alogram Inc.", "reason": null, "sources": [{"url": "https://startupsd.org/news/founders-fight-club-finalists-sdsw2026/", "source_type": "official finalist announcement", "checked_date": "2026-11-14", "evidence_note": "Explicitly named as Alogram's CEO and co-founder pitching at the event."}]},
+    {"case_id": "founder-sd-05", "case_type": "founder", "opportunity_id": "sd-founders-fight-club-2026", "expected_judgment": "verified", "person_name": "Andrew Sinkoe", "venture": "Sesh Incorporated", "reason": null, "sources": [{"url": "https://startupsd.org/news/founders-fight-club-finalists-sdsw2026/", "source_type": "official finalist announcement", "checked_date": "2026-11-14", "evidence_note": "The official page labels him the pitching founder and identifies him as Sesh's CEO."}]},
+    {"case_id": "founder-sd-06", "case_type": "founder", "opportunity_id": "sd-founders-fight-club-2026", "expected_judgment": "verified", "person_name": "Alex Towfigh", "venture": "AquaMesh", "reason": null, "sources": [{"url": "https://startupsd.org/news/founders-fight-club-finalists-sdsw2026/", "source_type": "official finalist announcement", "checked_date": "2026-11-14", "evidence_note": "Explicitly named as AquaMesh's founder and CEO pitching at the event."}]},
+    {"case_id": "founder-sd-07", "case_type": "founder", "opportunity_id": "sd-founders-fight-club-2026", "expected_judgment": "verified", "person_name": "Byron Ward", "venture": "Wayfarer Aircraft", "reason": null, "sources": [{"url": "https://startupsd.org/news/founders-fight-club-finalists-sdsw2026/", "source_type": "official finalist announcement", "checked_date": "2026-11-14", "evidence_note": "Explicitly named as Wayfarer Aircraft's founder and CEO pitching at the event."}]},
+    {"case_id": "organizer-sd-01", "case_type": "organizer", "opportunity_id": "sd-founders-fight-club-2026", "expected_judgment": "verified", "organization_name": "Startup San Diego", "reason": null, "sources": [{"url": "https://startupsd.org/news/founders-fight-club-finalists-sdsw2026/", "source_type": "official event page", "checked_date": "2026-11-14", "evidence_note": "Startup San Diego presents the event for startup founders; the event page gives the date, and https://startupsd.org/contact/ provides a public contact route."}]},
+    {"case_id": "organizer-utoronto-01", "case_type": "organizer", "opportunity_id": "utoronto-desjardins-2027", "expected_judgment": "verified", "organization_name": "University of Toronto Entrepreneurship", "reason": null, "sources": [{"url": "https://entrepreneurs.utoronto.ca/for-entrepreneurs/desjardins-startup-prize-2027/", "source_type": "official organizer page", "checked_date": "2026-11-14", "evidence_note": "Identified as delivering the prize, which serves startups; the March 4, 2027 pitch date and coordinator email are public."}]},
+    {"case_id": "organizer-synapse-01", "case_type": "organizer", "opportunity_id": "synapse-pitch-2027", "expected_judgment": "verified", "organization_name": "Innovation Factory", "reason": null, "sources": [{"url": "https://synapselifescience.com/apply/", "source_type": "official organizer page", "checked_date": "2026-11-14", "evidence_note": "The page states the Synapse Life Science Competition is brought to participants by Innovation Factory; it serves early-stage innovators, gives the March 24, 2027 showcase date, and publishes an official contact email."}]},
+    {"case_id": "negative-mcmaster-date-window-01", "case_type": "founder", "opportunity_id": "mcmaster-startup-survivor-2026", "expected_judgment": "rejected", "person_name": "Turki Alturaifi", "venture": "AeroVasQ", "reason": "event is fewer than seven calendar days after the reference date", "sources": [{"url": "https://theforge.mcmaster.ca/pitchcompetition/", "source_type": "official event page", "checked_date": "2026-11-14", "evidence_note": "Names Turki as the AeroVasQ pitcher; event date November 18 is four days after this case's reference date."}]},
+    {"case_id": "negative-presenter-unknown-01", "case_type": "founder", "opportunity_id": "cornell-mark-mobius-2026", "expected_judgment": "rejected", "person_name": "Jose Carrera", "venture": "ClearRootAI", "reason": "founder is named but the official page does not establish that this person is the presenter", "sources": [{"url": "https://business.cornell.edu/centers/ccem/conference/pitch-competition/", "source_type": "official event page", "checked_date": "2026-11-14", "evidence_note": "Names Jose Carrera as a ClearRootAI founder and says finalist teams pitch, but does not name him as the person who will present."}]}
+  ]
+}

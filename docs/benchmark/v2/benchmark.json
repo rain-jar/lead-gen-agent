@@ -1,0 +1,1414 @@
+{
+  "benchmark_id": "lead-discovery-v2",
+  "version": "2.0.0",
+  "schema_version": 2,
+  "status": "frozen",
+  "frozen_date": "2026-11-14",
+  "created_date": "2026-11-14",
+  "benchmark_date": "2026-11-14",
+  "ground_truth_rules": [
+    {
+      "rule_id": "R1",
+      "statement": "A finalist entry naming exactly one person, on an official page stating the finalists pitch or take the stage, names the presenter. Entries naming several people without a presenter designation are presenter_unknown.",
+      "approved_by": "user (Raj)",
+      "approved_date": "2026-11-14"
+    },
+    {
+      "rule_id": "R2",
+      "statement": "Finalist status in a founder competition satisfies newer-founder fit unless primary evidence shows the venture is established (e.g., a completed institutional Series A), in which case the case is established_founder.",
+      "approved_by": "user (Raj)",
+      "approved_date": "2026-11-14"
+    },
+    {
+      "rule_id": "R3",
+      "statement": "A replay opportunity's reference_date is the date of the dated public announcement naming that edition.",
+      "approved_by": "user (Raj)",
+      "approved_date": "2026-11-14"
+    }
+  ],
+  "description": "Frozen v2 known-item benchmark for founder/organizer lead discovery (frozen 2026-11-14). Live-split opportunities use reference_date = benchmark_date (2026-11-14; in-window events 2026-11-21 to 2027-05-14). Replay-split opportunities use their own historical reference date (the dated public announcement, rule R3). checked_date records when evidence was reviewed. Ground-truth rules R1-R3 were approved by the user on 2026-11-14. Do not edit in place; corrections or additions require a new version.",
+  "opportunities": [
+    {
+      "opportunity_id": "live-nextai-mtl-open-house-2026-12",
+      "name": "NEXT AI Montréal Open House pitch competition",
+      "edition": "2026-12 (2027 cohort recruitment)",
+      "split": "live",
+      "edition_key": "nextai-mtl-open-house-2026-12",
+      "reference_date": "2026-11-14",
+      "event_date": "2026-12-02",
+      "location": {
+        "city": "Montréal",
+        "region": "Québec",
+        "country": "CA"
+      },
+      "category": "accelerator open-house pitch competition",
+      "opportunity_type": "accelerator_or_incubator_demo_day",
+      "sector": "tech",
+      "operator": "NEXT AI Montréal (NEXT Canada)",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://luma.com/lt0uuj20",
+          "source_type": "official event page (organizer-hosted Luma calendar)",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Hosted by 'NEXT AI Montréal'. 'Finalists will be invited to pitch live at our December 2 Open House.' Pitch submissions due November 24; finalist names not yet published."
+        },
+        {
+          "url": "https://www.nextcanada.com/next-ai/",
+          "source_type": "official program page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Next AI is a world-class founder and venture development acceleration network for AI-enabled startups.' Stage of development: Discovery-Efficiency."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "live-udem-demoday-2026",
+      "name": "Demoday 2026 — La finale de nos parcours (Université de Montréal)",
+      "edition": "2026",
+      "split": "live",
+      "edition_key": "udem-demoday-2026",
+      "reference_date": "2026-11-14",
+      "event_date": "2026-12-04",
+      "location": {
+        "city": "Montréal",
+        "region": "Québec",
+        "country": "CA"
+      },
+      "category": "university incubator demo day",
+      "opportunity_type": "accelerator_or_incubator_demo_day",
+      "sector": "unspecified",
+      "operator": "Millénium Québecor (Université de Montréal incubator)",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://calendrier.umontreal.ca/activite/demoday-2026-la-finale-de-nos-parcours-pitch-et-kiosques",
+          "source_type": "official university event calendar",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'vendredi 4 décembre 2026, 12:00 à 14:30'; teams pitch ('assister aux pitchs des équipes'); 'la relève entrepreneuriale de l'Université de Montréal'; 'Organisée par : Millénium Québecor'. Listed as 'En ligne' while also mentioning on-site cocktail — format ambiguous, city is Montréal."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "live-ubc-venture-showcase-2026",
+      "name": "Innovation UBC Venture Showcase",
+      "edition": "2026",
+      "split": "live",
+      "edition_key": "ubc-venture-showcase-2026",
+      "reference_date": "2026-11-14",
+      "event_date": "2026-12-01",
+      "location": {
+        "city": "Vancouver",
+        "region": "British Columbia",
+        "country": "CA"
+      },
+      "category": "university venture showcase",
+      "opportunity_type": "founder_showcase",
+      "sector": "tech",
+      "operator": "Innovation UBC",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://innovation.ubc.ca/events/2026-venture-showcase",
+          "source_type": "official event page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'December 1, 2026, 4:00 pm to 7:30 pm', UBC Robson Square; 'Venture Presentations part 1/part 2'; categories include 'Sneak-a-Peek' up-and-coming ventures."
+        },
+        {
+          "url": "https://innovation.ubc.ca/announcements/2026-venture-showcase-presenting-companies",
+          "source_type": "official presenting-company announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Dated October 30, 2026. '17 UBC companies will take the stage'; lists companies only, with no individual presenter names."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "live-startup-tnt-calgary-fall-2026-finale",
+      "name": "Startup TNT Calgary Fall 2026 Investment Summit Finale",
+      "edition": "Fall 2026",
+      "split": "live",
+      "edition_key": "startup-tnt-calgary-fall-2026",
+      "reference_date": "2026-11-14",
+      "event_date": "2026-11-26",
+      "location": {
+        "city": "Calgary",
+        "region": "Alberta",
+        "country": "CA"
+      },
+      "category": "angel investment summit pitch finale",
+      "opportunity_type": "regional_or_national_pitch_final",
+      "sector": "tech",
+      "operator": "Startup TNT",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://startuptnt.com/summits/calgary",
+          "source_type": "official summit page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Investment Summit Finale: November 26, 2026'; 'Top 5 pitch at the Summit Finale'; 'Startup TNT is dedicated to improving access to capital for early-stage tech companies.' Top 5 names are not on the official page."
+        },
+        {
+          "url": "https://www.platformcalgary.com/event/startup-tnt-calgary-fall-investment-summit-finale-cdcc3",
+          "source_type": "venue event listing",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Platform Calgary lists the Finale on November 26, 2026, 5:00–9:00 pm, hosted by Startup TNT."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "live-uottawa-engineering-pitch-fall-2026",
+      "name": "uOttawa Engineering Pitch Competition (Design Day)",
+      "edition": "Fall 2026",
+      "split": "live",
+      "edition_key": "uottawa-engineering-pitch-fall-2026",
+      "reference_date": "2026-11-14",
+      "event_date": "2026-12-03",
+      "location": {
+        "city": "Ottawa",
+        "region": "Ontario",
+        "country": "CA"
+      },
+      "category": "university engineering pitch competition",
+      "opportunity_type": "university_competition",
+      "sector": "tech",
+      "operator": "University of Ottawa Faculty of Engineering — CEED",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://www.uottawa.ca/faculty-engineering/centre-entrepreneurship-engineering-design/pitch-competition",
+          "source_type": "official faculty page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'The next competition will take place on December 3, 2026.' Run by the Centre for Entrepreneurship and Engineering Design (CEED); 'empowers both aspiring founders with innovative ideas'; registration closes November 20, 2026."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "live-arena-2027",
+      "name": "The Arena Pitch Competition",
+      "edition": "2027",
+      "split": "live",
+      "edition_key": "arena-2027",
+      "reference_date": "2026-11-14",
+      "event_date": "2027-03-01",
+      "event_end_date": "2027-04-06",
+      "location": {
+        "city": "Halifax",
+        "region": "Nova Scotia",
+        "country": "CA"
+      },
+      "category": "national student bracket pitch competition",
+      "opportunity_type": "university_competition",
+      "sector": "mixed",
+      "operator": "Arthur L. Irving Entrepreneurship Centre (Saint Mary's University)",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://arthurlirvingentrepreneurshipcentre.ca/thearena/",
+          "source_type": "official competition page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'The Arena unfolds in a bracket-style competition from March 1 to April 6, 2027'; applicants 'Must be a student currently studying at or recently graduated'; 'Applications for the 2027 competition are now open'. Matches are streamed online; organizer is based in Halifax."
+        }
+      ],
+      "notes": "Event spans 2027-03-01 to 2027-04-06; both ends are inside the live window. The same page also shows 2026-edition finalists (see mismatched-edition negative)."
+    },
+    {
+      "opportunity_id": "live-uoft-desjardins-2027",
+      "name": "University of Toronto Desjardins Startup Prize",
+      "edition": "2027",
+      "split": "live",
+      "edition_key": "uoft-desjardins-2027",
+      "reference_date": "2026-11-14",
+      "event_date": "2027-03-04",
+      "location": {
+        "city": "Toronto",
+        "region": "Ontario",
+        "country": "CA"
+      },
+      "category": "university startup pitch competition",
+      "opportunity_type": "university_competition",
+      "sector": "mixed",
+      "operator": "University of Toronto Entrepreneurship",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://entrepreneurs.utoronto.ca/for-entrepreneurs/desjardins-startup-prize-2027/",
+          "source_type": "official organizer page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'March 4, 2027 — Pitch competition and winner selection'; Early-Stage category: 'less than $50,000 in cumulative funding'; applications close November 18, 2026; publishes a prize-questions email. Re-checked from v1."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "live-hen-hatch-2026-finals",
+      "name": "Hen Hatch Finals at Blue Hen Innovation Fest",
+      "edition": "2026",
+      "split": "live",
+      "edition_key": "hen-hatch-2026",
+      "reference_date": "2026-11-14",
+      "event_date": "2026-12-03",
+      "location": {
+        "city": "Newark",
+        "region": "Delaware",
+        "country": "US"
+      },
+      "category": "university startup funding competition",
+      "opportunity_type": "university_competition",
+      "sector": "mixed",
+      "operator": "Horn Entrepreneurship, University of Delaware",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://horn.udel.edu/meet-the-2026-hen-hatch-finalists",
+          "source_type": "official organizer finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Dated October 20, 2026. 'The four finalist teams will take the stage on December 3 at the Blue Hen Innovation Fest'; 'Each team will have seven minutes to present'. Venue city is not stated; Newark is the organizer's published address."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "live-mcmaster-startup-survivor-2026",
+      "name": "Startup Survivor: The Pitch Competition (live view)",
+      "edition": "2026",
+      "split": "live",
+      "edition_key": "mcmaster-startup-survivor-2026",
+      "reference_date": "2026-11-14",
+      "event_date": "2026-11-18",
+      "location": {
+        "city": "Hamilton",
+        "region": "Ontario",
+        "country": "CA"
+      },
+      "category": "university startup pitch competition",
+      "opportunity_type": "university_competition",
+      "sector": "tech",
+      "operator": "The Forge, McMaster University",
+      "expected_discovery": "ineligible",
+      "sources": [
+        {
+          "url": "https://theforge.mcmaster.ca/pitchcompetition/",
+          "source_type": "official event page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'The Startup Survivor Pitch Competition will take place on Wednesday, November 18' — 4 days after the live reference date, so outside the +7-day lower bound."
+        }
+      ],
+      "notes": "Live-split view of the same edition as replay-mcmaster-startup-survivor-2026 (shared edition_key)."
+    },
+    {
+      "opportunity_id": "live-startupfest-2027",
+      "name": "Startupfest 2027",
+      "edition": "2027",
+      "split": "live",
+      "edition_key": "startupfest-2027",
+      "reference_date": "2026-11-14",
+      "event_date": "2027-07-07",
+      "event_end_date": "2027-07-09",
+      "location": {
+        "city": "Montréal",
+        "region": "Québec",
+        "country": "CA"
+      },
+      "category": "founder festival with pitch competitions",
+      "opportunity_type": "festival_pitch_competition",
+      "sector": "tech",
+      "operator": "Startupfest",
+      "expected_discovery": "ineligible",
+      "sources": [
+        {
+          "url": "https://startupfest.com/",
+          "source_type": "official event homepage",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'July 7-9, 2027 | Montreal'; 'high-stakes pitch competitions'. July 7, 2027 is after the live window upper bound of 2027-05-14."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "live-velocity-pitch-competition-2026",
+      "name": "Velocity Pitch Competition",
+      "edition": "2026",
+      "split": "live",
+      "edition_key": "velocity-pitch-competition-2026",
+      "reference_date": "2026-11-14",
+      "event_date": "2026-09-12",
+      "location": {
+        "city": "Waterloo",
+        "region": "Ontario",
+        "country": "CA"
+      },
+      "category": "university student pitch competition",
+      "opportunity_type": "university_competition",
+      "sector": "tech",
+      "operator": "Velocity (University of Waterloo)",
+      "expected_discovery": "ineligible",
+      "sources": [
+        {
+          "url": "https://www.velocityincubator.com/programs-events/velocity-pitch-competition",
+          "source_type": "official event page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'September 12, 2026 1:00 pm', University of Waterloo — before the live reference date (past edition)."
+        },
+        {
+          "url": "https://www.velocityincubator.com/programs-events/vpc",
+          "source_type": "official program page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Held from 2011 to 2024 ... For information on upcoming pitches or challenges, follow our newsletters and social channels.' The only upcoming event listed on the page is 'Nov 16, 2026 — The Co-op Workplace Simulation by Velocity'."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "live-toronto-demo-night-2026-12-11",
+      "name": "Toronto Demo Night — Queen St E (Oribo listing)",
+      "edition": "2026-12-11",
+      "split": "live",
+      "edition_key": "toronto-demo-night-oribo-2026-12-11",
+      "reference_date": "2026-11-14",
+      "event_date": "2026-12-11",
+      "location": {
+        "city": "Toronto",
+        "region": "Ontario",
+        "country": "CA"
+      },
+      "category": "informal founder demo night",
+      "opportunity_type": "founder_showcase",
+      "sector": "tech",
+      "operator": null,
+      "expected_discovery": "ambiguous",
+      "sources": [
+        {
+          "url": "https://oribo.org/e/seed-evt-166-toronto",
+          "source_type": "third-party community event listing",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Six founders, four minutes each, live demo only'; 'Hosted by' an individual Oribo member (first name only); no organization, no presenter names, no contact route beyond the platform RSVP. Header time '10:30 PM' conflicts with the agenda ('6:30 — Doors')."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "replay-sd-founders-fight-club-2026",
+      "name": "Founders Fight Club Heavyweight Pitch Competition at San Diego Startup Week",
+      "edition": "2026",
+      "split": "replay",
+      "edition_key": "sd-founders-fight-club-2026",
+      "reference_date": "2026-10-28",
+      "event_date": "2026-11-06",
+      "location": {
+        "city": "San Diego",
+        "region": "California",
+        "country": "US"
+      },
+      "category": "startup pitch competition",
+      "opportunity_type": "regional_or_national_pitch_final",
+      "sector": "mixed",
+      "operator": "Startup San Diego",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://startupsd.org/news/founders-fight-club-finalists-sdsw2026/",
+          "source_type": "official organizer finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Posted: October 28, 2026'; event 'Friday, November 6'; each finalist entry names a 'Pitching founder'. Carried forward from v1 and re-checked."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "replay-mru-jmh-launchpad-2026",
+      "name": "JMH LaunchPad Pitch Competition (Mount Royal University)",
+      "edition": "2026",
+      "split": "replay",
+      "edition_key": "mru-jmh-launchpad-2026",
+      "reference_date": "2026-02-27",
+      "event_date": "2026-04-01",
+      "location": {
+        "city": "Calgary",
+        "region": "Alberta",
+        "country": "CA"
+      },
+      "category": "university student venture pitch competition",
+      "opportunity_type": "university_competition",
+      "sector": "mixed",
+      "operator": "MRU Institute for Innovation and Entrepreneurship",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://www.mtroyal.ca/ProgramsCourses/FacultiesSchoolsCentres/Business/Institutes/InstituteInnovationEntrepreneurship/Blog/Launchpad26profiles.htm",
+          "source_type": "official university finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Every year, JMH LaunchPad brings together some of the most ambitious student founders'; 'Join us on April 1st, 2026, as they take the stage.' Each finalist entry is 'Venture - Founder name'."
+        },
+        {
+          "url": "https://www.mtroyal.ca/ProgramsCourses/FacultiesSchoolsCentres/Business/Institutes/InstituteInnovationEntrepreneurship/Blog/index.htm",
+          "source_type": "official blog index",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Lists 'Introducing the 2026 JMH LaunchPad Pitch Competition Finalists!' dated February 27, 2026 (basis for the replay reference date)."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "replay-soar-2026",
+      "name": "SOAR Indigenous Entrepreneurship Competition Pitch Finale",
+      "edition": "2026",
+      "split": "replay",
+      "edition_key": "soar-2026",
+      "reference_date": "2026-10-13",
+      "event_date": "2026-10-21",
+      "location": {
+        "city": "Saskatoon",
+        "region": "Saskatchewan",
+        "country": "CA"
+      },
+      "category": "Indigenous entrepreneurship pitch competition",
+      "opportunity_type": "social_or_non_tech_competition",
+      "sector": "non-tech",
+      "operator": "SK Startup Institute (SREDA) and SIIT",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://skstartup.ca/news-events/news/meet-the-2026-soar-finalists/",
+          "source_type": "official organizer finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Dated Oct 13, 2026. 'On October 21, these finalists will take the stage at Wanuskewin Heritage Park to present their businesses to a live audience and panel of judges.' Run by SREDA's SK Startup Institute and SIIT."
+        }
+      ],
+      "notes": "Wanuskewin Heritage Park is outside Saskatoon city limits; city recorded as the nearest city."
+    },
+    {
+      "opportunity_id": "replay-climate-solutions-prize-2026",
+      "name": "Climate Solutions Prize Festival — Climate Tech Trailblazer Prize pitch",
+      "edition": "2026",
+      "split": "replay",
+      "edition_key": "climate-solutions-prize-2026",
+      "reference_date": "2026-05-21",
+      "event_date": "2026-06-09",
+      "location": {
+        "city": "Montréal",
+        "region": "Québec",
+        "country": "CA"
+      },
+      "category": "national cleantech pitch prize",
+      "opportunity_type": "regional_or_national_pitch_final",
+      "sector": "tech",
+      "operator": "Climate Solutions Prize",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://www.newswire.ca/news-releases/climate-solutions-prize-unveils-2026-top-10-finalists-ahead-of-largest-festival-yet-in-montreal-june-8-9-846184346.html",
+          "source_type": "official organizer press release (CNW)",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Dated May 21, 2026. 'The finalists will pitch live to a jury of investors ... on June 9'; festival at Marché Bonsecours, Montréal. Trailblazer entries are 'Venture (Founder name)'. Note: the release's research-prize list contains unresolved editorial placeholders ('[confirm name]'); no cases use that list."
+        }
+      ]
+    },
+    {
+      "opportunity_id": "replay-mcmaster-startup-survivor-2026",
+      "name": "Startup Survivor: The Pitch Competition (replay view)",
+      "edition": "2026",
+      "split": "replay",
+      "edition_key": "mcmaster-startup-survivor-2026",
+      "reference_date": "2026-10-29",
+      "event_date": "2026-11-18",
+      "location": {
+        "city": "Hamilton",
+        "region": "Ontario",
+        "country": "CA"
+      },
+      "category": "university startup pitch competition",
+      "opportunity_type": "university_competition",
+      "sector": "tech",
+      "operator": "The Forge, McMaster University",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://news.mcmaster.ca/five-startups-compete-for-30000-in-startup-survivor-2026/",
+          "source_type": "official university news",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Published 2026-10-29 (article:published_time). Names the five finalist startups and founders; 'Join us Wednesday, Nov. 18'. Basis for the replay reference date."
+        },
+        {
+          "url": "https://theforge.mcmaster.ca/pitchcompetition/",
+          "source_type": "official event page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Lists each finalist with a 'Pitching:' designation. Publication date of the 'Pitching' designations is unknown; checked 2026-11-14."
+        }
+      ],
+      "notes": "Replay view of the same edition as live-mcmaster-startup-survivor-2026."
+    },
+    {
+      "opportunity_id": "replay-swc-ottawa-regional-2026",
+      "name": "Startup World Cup Ottawa Regional Competition at AccelerateOTT",
+      "edition": "2026",
+      "split": "replay",
+      "edition_key": "swc-ottawa-regional-2026",
+      "reference_date": "2026-05-28",
+      "event_date": "2026-06-11",
+      "location": {
+        "city": "Ottawa",
+        "region": "Ontario",
+        "country": "CA"
+      },
+      "category": "regional startup pitch final",
+      "opportunity_type": "regional_or_national_pitch_final",
+      "sector": "tech",
+      "operator": "Invest Ottawa",
+      "expected_discovery": "eligible",
+      "sources": [
+        {
+          "url": "https://www.investottawa.ca/blog/ten-startups-one-global-stage-meet-the-founders-competing-at-startup-world-cup-ottawa-regional-competition/",
+          "source_type": "official organizer announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Dated May 28, 2026. 'On June 11, ten founders ... will walk onto the stage at Lansdowne Park'; finalist list is company-only; names the judging panel."
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "founder-sd-01",
+      "case_type": "founder",
+      "opportunity_id": "replay-sd-founders-fight-club-2026",
+      "expected_judgment": "verified",
+      "person_name": "Kanna (Uchida) Ecklund",
+      "venture": "Asaichi",
+      "sector": "non-tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Selected startup finalist in a founder pitch competition (finalist status per PROJECT.md newer-founder examples).",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://startupsd.org/news/founders-fight-club-finalists-sdsw2026/",
+          "source_type": "official finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Pitching founder: Kanna (Uchida) Ecklund, Founder' for the November 6, 2026 event. Carried forward from v1."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-sd-02",
+      "case_type": "founder",
+      "opportunity_id": "replay-sd-founders-fight-club-2026",
+      "expected_judgment": "verified",
+      "person_name": "Byron Ward",
+      "venture": "Wayfarer Aircraft",
+      "sector": "tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Selected startup finalist in a founder pitch competition (finalist status per PROJECT.md newer-founder examples).",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://startupsd.org/news/founders-fight-club-finalists-sdsw2026/",
+          "source_type": "official finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Pitching founder: Byron Ward, Founder & CEO' for the November 6, 2026 event. Carried forward from v1."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-mru-01",
+      "case_type": "founder",
+      "opportunity_id": "replay-mru-jmh-launchpad-2026",
+      "expected_judgment": "verified",
+      "person_name": "Janine de Castro",
+      "venture": "Echelon Fragrances",
+      "sector": "non-tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Student founder: page describes finalists as 'ambitious student founders at Mount Royal University'.",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://www.mtroyal.ca/ProgramsCourses/FacultiesSchoolsCentres/Business/Institutes/InstituteInnovationEntrepreneurship/Blog/Launchpad26profiles.htm",
+          "source_type": "official university finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Echelon Fragrances - Janine de Castro'; 'Crafted and sold by founder Janine de Castro'. Single named finalist per entry; 'Join us on April 1st, 2026, as they take the stage.'"
+        }
+      ]
+    },
+    {
+      "case_id": "founder-mru-02",
+      "case_type": "founder",
+      "opportunity_id": "replay-mru-jmh-launchpad-2026",
+      "expected_judgment": "verified",
+      "person_name": "Mohamad Allaq",
+      "venture": "Tire Sync",
+      "sector": "tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Student founder: page describes finalists as 'ambitious student founders at Mount Royal University'.",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://www.mtroyal.ca/ProgramsCourses/FacultiesSchoolsCentres/Business/Institutes/InstituteInnovationEntrepreneurship/Blog/Launchpad26profiles.htm",
+          "source_type": "official university finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Tire Sync - Mohamad Allaq'; 'Built by a tire shop owner for tire shop owners'. Single named finalist per entry; 'Join us on April 1st, 2026, as they take the stage.'"
+        }
+      ]
+    },
+    {
+      "case_id": "founder-mru-03",
+      "case_type": "founder",
+      "opportunity_id": "replay-mru-jmh-launchpad-2026",
+      "expected_judgment": "verified",
+      "person_name": "Caitlin McCarthy",
+      "venture": "Succora",
+      "sector": "tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Student founder: page describes finalists as 'ambitious student founders at Mount Royal University'.",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://www.mtroyal.ca/ProgramsCourses/FacultiesSchoolsCentres/Business/Institutes/InstituteInnovationEntrepreneurship/Blog/Launchpad26profiles.htm",
+          "source_type": "official university finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Succora - Caitlin McCarthy'. Single named finalist per entry; 'Join us on April 1st, 2026, as they take the stage.'"
+        }
+      ]
+    },
+    {
+      "case_id": "founder-soar-01",
+      "case_type": "founder",
+      "opportunity_id": "replay-soar-2026",
+      "expected_judgment": "verified",
+      "person_name": "Tyler Jobb",
+      "venture": "Jobb Developments",
+      "sector": "non-tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Finalist in an entrepreneurship competition; finalist status is the only newer-founder evidence on the page (venture age not stated).",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://skstartup.ca/news-events/news/meet-the-2026-soar-finalists/",
+          "source_type": "official organizer finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Listed as a 2026 SOAR finalist: 'Tyler Jobb / Jobb Developments / Peter Ballantyne Cree Nation'. 'these finalists will take the stage ... to present their businesses' on October 21."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-soar-02",
+      "case_type": "founder",
+      "opportunity_id": "replay-soar-2026",
+      "expected_judgment": "verified",
+      "person_name": "Rene L’Heureux",
+      "venture": "Beauty Spot Lash Bar & Spa Ltd.",
+      "sector": "non-tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Finalist in an entrepreneurship competition; finalist status is the only newer-founder evidence on the page (venture age not stated).",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://skstartup.ca/news-events/news/meet-the-2026-soar-finalists/",
+          "source_type": "official organizer finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Listed as a 2026 SOAR finalist: 'Rene L’Heureux / Beauty Spot Lash Bar & Spa Ltd. / Battleford, SK'. 'these finalists will take the stage ... to present their businesses' on October 21."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-soar-03",
+      "case_type": "founder",
+      "opportunity_id": "replay-soar-2026",
+      "expected_judgment": "verified",
+      "person_name": "Micaela Champagne",
+      "venture": "askîhk Research Services",
+      "sector": "non-tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Finalist in an entrepreneurship competition; finalist status is the only newer-founder evidence on the page (venture age not stated).",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://skstartup.ca/news-events/news/meet-the-2026-soar-finalists/",
+          "source_type": "official organizer finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Listed as a 2026 SOAR finalist: 'Micaela Champagne / askîhk Research Services / Saskatoon, SK'. 'these finalists will take the stage ... to present their businesses' on October 21."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-csp-01",
+      "case_type": "founder",
+      "opportunity_id": "replay-climate-solutions-prize-2026",
+      "expected_judgment": "verified",
+      "person_name": "Daniel Bastien",
+      "venture": "Local Energy",
+      "sector": "tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Finalist; Local Energy also appears in the Climate Startup Equity Prize list, which 'recognizes early-stage Quebec-based climate startups'.",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://www.newswire.ca/news-releases/climate-solutions-prize-unveils-2026-top-10-finalists-ahead-of-largest-festival-yet-in-montreal-june-8-9-846184346.html",
+          "source_type": "official organizer press release",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Trailblazer finalist entry 'Local Energy (Daniel Bastien)'; 'The finalists will pitch live ... on June 9'."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-csp-02",
+      "case_type": "founder",
+      "opportunity_id": "replay-climate-solutions-prize-2026",
+      "expected_judgment": "verified",
+      "person_name": "Jaiya Varshney",
+      "venture": "Tydra Biomaterial Labs Ltd",
+      "sector": "tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Competition finalist; no contrary maturity evidence was checked beyond the release.",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://www.newswire.ca/news-releases/climate-solutions-prize-unveils-2026-top-10-finalists-ahead-of-largest-festival-yet-in-montreal-june-8-9-846184346.html",
+          "source_type": "official organizer press release",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Trailblazer finalist entry 'Tydra Biomaterial Labs Ltd (Jaiya Varshney)'; finalists pitch live on June 9."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-csp-03",
+      "case_type": "founder",
+      "opportunity_id": "replay-climate-solutions-prize-2026",
+      "expected_judgment": "verified",
+      "person_name": "Aaron Guan",
+      "venture": "Neptune Nanotechnologies",
+      "sector": "tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Competition finalist; no contrary maturity evidence was checked beyond the release.",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://www.newswire.ca/news-releases/climate-solutions-prize-unveils-2026-top-10-finalists-ahead-of-largest-festival-yet-in-montreal-june-8-9-846184346.html",
+          "source_type": "official organizer press release",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Trailblazer finalist entry 'Neptune Nanotechnologies (Aaron Guan)'; finalists pitch live on June 9."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-mcmaster-01",
+      "case_type": "founder",
+      "opportunity_id": "replay-mcmaster-startup-survivor-2026",
+      "expected_judgment": "verified",
+      "person_name": "David George",
+      "venture": "Sunbeam Health",
+      "sector": "tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Student founder. McMaster News: 'Founded by David George, an Honours Biochemistry student'.",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://theforge.mcmaster.ca/pitchcompetition/",
+          "source_type": "official event page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Pitching: David George (Faculty of Science)' for the November 18, 2026 competition."
+        },
+        {
+          "url": "https://news.mcmaster.ca/five-startups-compete-for-30000-in-startup-survivor-2026/",
+          "source_type": "official university news (published 2026-10-29)",
+          "checked_date": "2026-11-14",
+          "evidence_note": "McMaster News: 'Founded by David George, an Honours Biochemistry student'; 'Join us Wednesday, Nov. 18'."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-mcmaster-02",
+      "case_type": "founder",
+      "opportunity_id": "replay-mcmaster-startup-survivor-2026",
+      "expected_judgment": "verified",
+      "person_name": "Elsa Sheikh",
+      "venture": "Sensera Health",
+      "sector": "tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Student founder. McMaster News: co-founders 'are all students at McMaster University’s Master of Biomedical Innovation program'.",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://theforge.mcmaster.ca/pitchcompetition/",
+          "source_type": "official event page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Pitching: Elsa Sheikh (Faculty of Health Sciences)' for the November 18, 2026 competition."
+        },
+        {
+          "url": "https://news.mcmaster.ca/five-startups-compete-for-30000-in-startup-survivor-2026/",
+          "source_type": "official university news (published 2026-10-29)",
+          "checked_date": "2026-11-14",
+          "evidence_note": "McMaster News: co-founders 'are all students at McMaster University’s Master of Biomedical Innovation program'; 'Join us Wednesday, Nov. 18'."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-mcmaster-03",
+      "case_type": "founder",
+      "opportunity_id": "replay-mcmaster-startup-survivor-2026",
+      "expected_judgment": "verified",
+      "person_name": "Manu Dissanayake",
+      "venture": "Sanaré Technologies",
+      "sector": "tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Student founder. McMaster News: team members 'are all pursuing a Master of Biomedical Innovation'.",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://theforge.mcmaster.ca/pitchcompetition/",
+          "source_type": "official event page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Pitching: Manu Dissanayake (Faculty of Health Sciences, Faculty of Science)' for the November 18, 2026 competition."
+        },
+        {
+          "url": "https://news.mcmaster.ca/five-startups-compete-for-30000-in-startup-survivor-2026/",
+          "source_type": "official university news (published 2026-10-29)",
+          "checked_date": "2026-11-14",
+          "evidence_note": "McMaster News: team members 'are all pursuing a Master of Biomedical Innovation'; 'Join us Wednesday, Nov. 18'."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-henhatch-01",
+      "case_type": "founder",
+      "opportunity_id": "live-hen-hatch-2026-finals",
+      "expected_judgment": "verified",
+      "person_name": "Arjun Nanda Kumar",
+      "venture": "Agri Sky Eye",
+      "sector": "tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Student founder of a 'student-led venture' (Hen Hatch finalist).",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://horn.udel.edu/meet-the-2026-hen-hatch-finalists",
+          "source_type": "official organizer finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Agri Sky Eye — Arjun Nanda Kumar | Graduate Student, Robotics | Expected 2027'. Only person named for the team; 'The four finalist teams will take the stage on December 3'."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-henhatch-02",
+      "case_type": "founder",
+      "opportunity_id": "live-hen-hatch-2026-finals",
+      "expected_judgment": "verified",
+      "person_name": "Drew Tendler",
+      "venture": "ContentCraze",
+      "sector": "tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Student founder of a 'student-led venture' (Hen Hatch finalist).",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://horn.udel.edu/meet-the-2026-hen-hatch-finalists",
+          "source_type": "official organizer finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'ContentCraze — Drew Tendler | Finance, Sales Minor | Class of 2028'. Only person named for the team; 'The four finalist teams will take the stage on December 3'."
+        }
+      ]
+    },
+    {
+      "case_id": "founder-henhatch-03",
+      "case_type": "founder",
+      "opportunity_id": "live-hen-hatch-2026-finals",
+      "expected_judgment": "verified",
+      "person_name": "Annamalai Muthupalaniappan",
+      "venture": "Rivulet",
+      "sector": "tech",
+      "failure_category": null,
+      "duplicate_of": null,
+      "newer_founder_evidence": "Student founder of a 'student-led venture' (Hen Hatch finalist).",
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://horn.udel.edu/meet-the-2026-hen-hatch-finalists",
+          "source_type": "official organizer finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Rivulet — Annamalai Muthupalaniappan | Graduate Student, Mechanical Engineering | Class of 2030'. Only person named for the team; 'The four finalist teams will take the stage on December 3'."
+        }
+      ]
+    },
+    {
+      "case_id": "organizer-nextai-01",
+      "case_type": "organizer",
+      "opportunity_id": "live-nextai-mtl-open-house-2026-12",
+      "expected_judgment": "verified",
+      "organization_name": "NEXT AI Montréal",
+      "failure_category": null,
+      "duplicate_of": null,
+      "audience_evidence": "Accelerator for AI-enabled startups at 'Discovery-Efficiency' stage; pitch winner gets a final-interview invite for the 2027 cohort.",
+      "contact_route": {
+        "url": "https://luma.com/0ljjlm5m",
+        "kind": "published program inquiry email (infomtl@nextai.com) plus Luma 'Contact the Host'"
+      },
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://luma.com/lt0uuj20",
+          "source_type": "official event page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Hosted by NEXT AI Montréal; startup pitch competition with finalists pitching December 2, 2026."
+        },
+        {
+          "url": "https://luma.com/0ljjlm5m",
+          "source_type": "official info-session page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Questions about the Montreal or remote program: infomtl@nextai.com'."
+        }
+      ]
+    },
+    {
+      "case_id": "organizer-millenium-01",
+      "case_type": "organizer",
+      "opportunity_id": "live-udem-demoday-2026",
+      "expected_judgment": "verified",
+      "organization_name": "Millénium Québecor (Université de Montréal)",
+      "failure_category": null,
+      "duplicate_of": null,
+      "audience_evidence": "University incubator; Demoday celebrates 'la relève entrepreneuriale de l'Université de Montréal'.",
+      "contact_route": {
+        "url": "https://millenium.umontreal.ca/contact/",
+        "kind": "official contact form"
+      },
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://calendrier.umontreal.ca/activite/demoday-2026-la-finale-de-nos-parcours-pitch-et-kiosques",
+          "source_type": "official university event calendar",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Organisée par : Millénium Québecor'; Demoday on 4 December 2026 with team pitches."
+        },
+        {
+          "url": "https://millenium.umontreal.ca/a-propos-nouveau/",
+          "source_type": "official organizer page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Millénium Québecor, l’incubateur de l’Université de Montréal'."
+        }
+      ]
+    },
+    {
+      "case_id": "organizer-ubc-01",
+      "case_type": "organizer",
+      "opportunity_id": "live-ubc-venture-showcase-2026",
+      "expected_judgment": "verified",
+      "organization_name": "Innovation UBC",
+      "failure_category": null,
+      "duplicate_of": null,
+      "audience_evidence": "Ventures from Venture Founder / HATCH programs, including 'Sneak a Peek: Up-and-coming ventures'.",
+      "contact_route": {
+        "url": "https://innovation.ubc.ca/about-us/contact-us",
+        "kind": "published program email (programs@innovation.ubc.ca) for entrepreneurship and venture building"
+      },
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://innovation.ubc.ca/events/2026-venture-showcase",
+          "source_type": "official event page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Innovation UBC's annual Venture Showcase on December 1, 2026."
+        },
+        {
+          "url": "https://innovation.ubc.ca/about-us/contact-us",
+          "source_type": "official contact page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'entrepreneurship and venture building, contact programs@innovation.ubc.ca'."
+        }
+      ]
+    },
+    {
+      "case_id": "organizer-tnt-01",
+      "case_type": "organizer",
+      "opportunity_id": "live-startup-tnt-calgary-fall-2026-finale",
+      "expected_judgment": "verified",
+      "organization_name": "Startup TNT",
+      "failure_category": null,
+      "duplicate_of": null,
+      "audience_evidence": "Early-stage tech companies raising angel capital.",
+      "contact_route": {
+        "url": "https://startuptnt.com/contact",
+        "kind": "official contact form"
+      },
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://startuptnt.com/summits/calgary",
+          "source_type": "official summit page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Finale on November 26, 2026; mission is access to capital for 'early-stage tech companies'."
+        },
+        {
+          "url": "https://startuptnt.com/contact",
+          "source_type": "official contact page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Send us a message through the contact form'."
+        }
+      ]
+    },
+    {
+      "case_id": "organizer-uottawa-01",
+      "case_type": "organizer",
+      "opportunity_id": "live-uottawa-engineering-pitch-fall-2026",
+      "expected_judgment": "verified",
+      "organization_name": "University of Ottawa Faculty of Engineering — Centre for Entrepreneurship and Engineering Design (CEED)",
+      "failure_category": null,
+      "duplicate_of": null,
+      "audience_evidence": "Engineering student founders at idea and concept stages.",
+      "contact_route": {
+        "url": "https://www.uottawa.ca/faculty-engineering/centre-entrepreneurship-engineering-design/pitch-competition",
+        "kind": "named program-manager business email published on the competition page (not copied here)"
+      },
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://www.uottawa.ca/faculty-engineering/centre-entrepreneurship-engineering-design/pitch-competition",
+          "source_type": "official faculty page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "December 3, 2026 competition; Idea and Concept categories for engineering students; 'For more information, please contact:' the MakerLaunch Startup Accelerator manager."
+        }
+      ]
+    },
+    {
+      "case_id": "organizer-arena-01",
+      "case_type": "organizer",
+      "opportunity_id": "live-arena-2027",
+      "expected_judgment": "verified",
+      "organization_name": "Arthur L. Irving Entrepreneurship Centre (Saint Mary's University)",
+      "failure_category": null,
+      "duplicate_of": null,
+      "audience_evidence": "Student or recent-graduate founders with ≤$10,000 revenue and ≤$10,000 external funding.",
+      "contact_route": {
+        "url": "https://arthurlirvingentrepreneurshipcentre.ca/contact-us/",
+        "kind": "official contact form"
+      },
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://arthurlirvingentrepreneurshipcentre.ca/thearena/",
+          "source_type": "official competition page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "The Arena 2027 runs March 1 to April 6, 2027 for student entrepreneurs."
+        },
+        {
+          "url": "https://arthurlirvingentrepreneurshipcentre.ca/contact-us/",
+          "source_type": "official contact page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Get In Touch' contact form; Halifax, Nova Scotia address."
+        }
+      ]
+    },
+    {
+      "case_id": "organizer-uoft-01",
+      "case_type": "organizer",
+      "opportunity_id": "live-uoft-desjardins-2027",
+      "expected_judgment": "verified",
+      "organization_name": "University of Toronto Entrepreneurship",
+      "failure_category": null,
+      "duplicate_of": null,
+      "audience_evidence": "U of T startups; Early-Stage category requires <$50,000 cumulative funding.",
+      "contact_route": {
+        "url": "https://entrepreneurs.utoronto.ca/for-entrepreneurs/desjardins-startup-prize-2027/",
+        "kind": "prize-questions email published on the page"
+      },
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://entrepreneurs.utoronto.ca/for-entrepreneurs/desjardins-startup-prize-2027/",
+          "source_type": "official organizer page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "March 4, 2027 pitch competition; 'Questions about the prize? Email ...'. Re-checked from v1."
+        }
+      ]
+    },
+    {
+      "case_id": "organizer-horn-01",
+      "case_type": "organizer",
+      "opportunity_id": "live-hen-hatch-2026-finals",
+      "expected_judgment": "verified",
+      "organization_name": "Horn Entrepreneurship (University of Delaware)",
+      "failure_category": null,
+      "duplicate_of": null,
+      "audience_evidence": "Student-led ventures at the University of Delaware.",
+      "contact_route": {
+        "url": "https://horn.udel.edu/meet-the-2026-hen-hatch-finalists",
+        "kind": "published program email (hornprogram@udel.edu)"
+      },
+      "reason": null,
+      "sources": [
+        {
+          "url": "https://horn.udel.edu/meet-the-2026-hen-hatch-finalists",
+          "source_type": "official organizer page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Hen Hatch finals on December 3, 2026; footer publishes 'hornprogram@udel.edu'."
+        }
+      ]
+    },
+    {
+      "case_id": "negative-past-edition-01",
+      "case_type": "founder",
+      "opportunity_id": "live-velocity-pitch-competition-2026",
+      "expected_judgment": "rejected",
+      "person_name": "Serena Wittenberg",
+      "venture": "LARS",
+      "sector": "tech",
+      "failure_category": "past_edition",
+      "duplicate_of": null,
+      "newer_founder_evidence": null,
+      "reason": "the named pitch is at a completed edition (September 12, 2026), before the live reference date",
+      "sources": [
+        {
+          "url": "https://www.velocityincubator.com/news/inside-the-ecosystem-behind-waterloos-entrepreneurial-success",
+          "source_type": "official incubator news (2026-09-17)",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Serena Wittenberg ... is the founder of LARS'; 'Following her pitch, Wittenberg was approached by angel investors' — pitch already happened on September 12, 2026."
+        }
+      ]
+    },
+    {
+      "case_id": "negative-presenter-unknown-company-only-01",
+      "case_type": "founder",
+      "opportunity_id": "live-ubc-venture-showcase-2026",
+      "expected_judgment": "rejected",
+      "person_name": null,
+      "venture": "Carapex Biotechnologies",
+      "sector": "tech",
+      "failure_category": "presenter_unknown",
+      "duplicate_of": null,
+      "newer_founder_evidence": null,
+      "reason": "company-only lineup: the official source names the venture but no individual presenter",
+      "sources": [
+        {
+          "url": "https://innovation.ubc.ca/announcements/2026-venture-showcase-presenting-companies",
+          "source_type": "official presenting-company announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Lists 'Carapex Biotechnologies' (Sneak a Peek) with affiliation and website only; no person is named as presenter."
+        }
+      ]
+    },
+    {
+      "case_id": "negative-presenter-unknown-multi-01",
+      "case_type": "founder",
+      "opportunity_id": "live-hen-hatch-2026-finals",
+      "expected_judgment": "rejected",
+      "person_name": "Emmanuel Akande",
+      "venture": "GIGXY LLC",
+      "sector": "tech",
+      "failure_category": "presenter_unknown",
+      "duplicate_of": null,
+      "newer_founder_evidence": null,
+      "reason": "team member is named, but the official page does not establish this person as the presenter (same rule as v1 Cornell case)",
+      "sources": [
+        {
+          "url": "https://horn.udel.edu/meet-the-2026-hen-hatch-finalists",
+          "source_type": "official organizer finalist announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "GIGXY entry names two students (Emmanuel Akande and Jesse Wilson); 'Each team will have seven minutes to present' but the page does not say who presents."
+        }
+      ]
+    },
+    {
+      "case_id": "negative-date-window-too-soon-01",
+      "case_type": "founder",
+      "opportunity_id": "live-mcmaster-startup-survivor-2026",
+      "expected_judgment": "rejected",
+      "person_name": "Turki Alturaifi",
+      "venture": "AeroVasQ",
+      "sector": "tech",
+      "failure_category": "outside_date_window",
+      "duplicate_of": null,
+      "newer_founder_evidence": null,
+      "reason": "event is fewer than seven calendar days after the live reference date",
+      "sources": [
+        {
+          "url": "https://theforge.mcmaster.ca/pitchcompetition/",
+          "source_type": "official event page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'Pitching : Turki Alturaifi'; event on November 18, 2026 — 4 days after the live reference date. Carried forward from v1 negative case."
+        }
+      ]
+    },
+    {
+      "case_id": "negative-date-window-too-far-01",
+      "case_type": "organizer",
+      "opportunity_id": "live-startupfest-2027",
+      "expected_judgment": "rejected",
+      "organization_name": "Startupfest",
+      "failure_category": "outside_date_window",
+      "duplicate_of": null,
+      "audience_evidence": "Founder-focused festival with pitch competitions.",
+      "contact_route": {
+        "url": "https://startupfest.com/",
+        "kind": "contact link on official homepage"
+      },
+      "reason": "the next event date (2027-07-07) is beyond the +6-month window",
+      "sources": [
+        {
+          "url": "https://startupfest.com/",
+          "source_type": "official event homepage",
+          "checked_date": "2026-11-14",
+          "evidence_note": "'July 7-9, 2027 | Montreal' — more than six months after 2026-11-14."
+        }
+      ]
+    },
+    {
+      "case_id": "negative-judge-not-pitcher-01",
+      "case_type": "founder",
+      "opportunity_id": "replay-swc-ottawa-regional-2026",
+      "expected_judgment": "rejected",
+      "person_name": "Keira Frosst",
+      "venture": "mDETECT",
+      "sector": "tech",
+      "failure_category": "non_pitching_role",
+      "duplicate_of": null,
+      "newer_founder_evidence": null,
+      "reason": "named founder holds a judge role at this edition, not a pitching/presenting role",
+      "sources": [
+        {
+          "url": "https://www.investottawa.ca/blog/ten-startups-one-global-stage-meet-the-founders-competing-at-startup-world-cup-ottawa-regional-competition/",
+          "source_type": "official organizer announcement",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Under 'The Panel Deciding Who Advances': 'Keira Frosst, Co-Founder and CSO of mDETECT, is a Startup World Cup Canada finalist' — she judges this event rather than pitching."
+        }
+      ]
+    },
+    {
+      "case_id": "negative-established-founder-01",
+      "case_type": "founder",
+      "opportunity_id": "replay-climate-solutions-prize-2026",
+      "expected_judgment": "rejected",
+      "person_name": "Michael Kelland",
+      "venture": "Planetary",
+      "sector": "tech",
+      "failure_category": "established_founder",
+      "duplicate_of": null,
+      "newer_founder_evidence": null,
+      "reason": "the venture is institutionally funded through a Series A, so the founder is outside the newer-founder profile even though he is a named finalist",
+      "sources": [
+        {
+          "url": "https://www.newswire.ca/news-releases/climate-solutions-prize-unveils-2026-top-10-finalists-ahead-of-largest-festival-yet-in-montreal-june-8-9-846184346.html",
+          "source_type": "official organizer press release",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Trailblazer finalist entry 'Planetary (Michael Kelland)'."
+        },
+        {
+          "url": "https://www.planetarytech.com/for-immediate-release-planetary-technologies-secures-11-35-million-in-series-a-funding-to-accelerate-carbon-removal-initiatives/",
+          "source_type": "company press release",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Planetary 'raising $11.35 million USD' in a completed Series A (release dated 9/30/2024); quotes 'Mike Kelland, CEO'."
+        }
+      ]
+    },
+    {
+      "case_id": "negative-mismatched-edition-01",
+      "case_type": "founder",
+      "opportunity_id": "live-arena-2027",
+      "expected_judgment": "rejected",
+      "person_name": "Haden Harrison",
+      "venture": "Agrivanna",
+      "sector": "tech",
+      "failure_category": "mismatched_edition",
+      "duplicate_of": null,
+      "newer_founder_evidence": null,
+      "reason": "presenter evidence is from the 2026 edition; joining it to the 2027 date violates event-edition integrity",
+      "sources": [
+        {
+          "url": "https://arthurlirvingentrepreneurshipcentre.ca/thearena/",
+          "source_type": "official competition page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "The same page shows the 2027 dates (March 1–April 6, 2027) and 'Congratulations to Haden Harrison ... named 2026 The Arena Pitch Competition Champion'. His evidence belongs to the 2026 edition."
+        }
+      ]
+    },
+    {
+      "case_id": "negative-organizer-no-upcoming-01",
+      "case_type": "organizer",
+      "opportunity_id": "live-velocity-pitch-competition-2026",
+      "expected_judgment": "rejected",
+      "organization_name": "Velocity (University of Waterloo)",
+      "failure_category": "organizer_no_upcoming_event",
+      "duplicate_of": null,
+      "audience_evidence": "University of Waterloo student founders.",
+      "contact_route": {
+        "url": "https://www.velocityincubator.com/programs-events/vpc",
+        "kind": "newsletter / contact link"
+      },
+      "reason": "the organizer has no published qualifying event in the +7-day to +6-month window on the checked pages",
+      "sources": [
+        {
+          "url": "https://www.velocityincubator.com/programs-events/vpc",
+          "source_type": "official program page",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Last pitch competition was September 12, 2026; 'For information on upcoming pitches ... follow our newsletters'. The only listed upcoming event is a November 16, 2026 co-op workplace simulation, which is not a founder pitch event and falls inside the 7-day exclusion."
+        }
+      ]
+    },
+    {
+      "case_id": "ambiguous-insufficient-evidence-01",
+      "case_type": "organizer",
+      "opportunity_id": "live-toronto-demo-night-2026-12-11",
+      "expected_judgment": "provisional",
+      "organization_name": "Toronto Demo Night (Oribo listing; no organization identified)",
+      "failure_category": "insufficient_evidence",
+      "duplicate_of": null,
+      "audience_evidence": "'Six founders, four minutes each' — product at any stage.",
+      "contact_route": null,
+      "reason": "operator identity and public contact route are unverified, and the only source is a third-party listing",
+      "sources": [
+        {
+          "url": "https://oribo.org/e/seed-evt-166-toronto",
+          "source_type": "third-party community event listing",
+          "checked_date": "2026-11-14",
+          "evidence_note": "An individual member hosts the event; no operating organization, no official source, no contact route other than RSVP, and the listing's time is internally inconsistent. In-window date (December 11, 2026) and founder audience ('Bring a working product (any stage)')."
+        }
+      ]
+    },
+    {
+      "case_id": "negative-duplicate-person-01",
+      "case_type": "founder",
+      "opportunity_id": "replay-climate-solutions-prize-2026",
+      "expected_judgment": "rejected",
+      "person_name": "Daniel Bastien",
+      "venture": "Local Energy",
+      "sector": "tech",
+      "failure_category": "duplicate",
+      "duplicate_of": "founder-csp-01",
+      "newer_founder_evidence": null,
+      "reason": "second appearance of the same founder/venture at the same edition; must be merged, not counted twice",
+      "sources": [
+        {
+          "url": "https://www.newswire.ca/news-releases/climate-solutions-prize-unveils-2026-top-10-finalists-ahead-of-largest-festival-yet-in-montreal-june-8-9-846184346.html",
+          "source_type": "official organizer press release",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Local Energy is listed again in the 2026 Climate Startup Equity Prize finalists ('Uses AI to turn complex thermal and industrial energy systems into flexible energy assets') — the same venture and edition as founder-csp-01."
+        }
+      ]
+    },
+    {
+      "case_id": "negative-duplicate-event-01",
+      "case_type": "organizer",
+      "opportunity_id": "live-nextai-mtl-open-house-2026-12",
+      "expected_judgment": "rejected",
+      "organization_name": "NEXT AI Montréal",
+      "failure_category": "duplicate",
+      "duplicate_of": "organizer-nextai-01",
+      "audience_evidence": "Same as organizer-nextai-01.",
+      "contact_route": {
+        "url": "https://luma.com/0ljjlm5m",
+        "kind": "same as organizer-nextai-01"
+      },
+      "reason": "duplicate discovery of an already-counted event edition and organizer via a mirror URL",
+      "sources": [
+        {
+          "url": "https://arclight.events/event/next-ai-montr-al-open-house-ydlfrh",
+          "source_type": "third-party mirror listing",
+          "checked_date": "2026-11-14",
+          "evidence_note": "Arclight republishes 'NEXT AI Montréal Open House' (Wed, Dec 2, 5 PM–7 PM) with identical text — the same edition found at a second URL."
+        }
+      ]
+    }
+  ]
+}
