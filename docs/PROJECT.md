@@ -1,7 +1,7 @@
 # Lead Generation MVP — Project Definition
 
 - Last updated: 2026-11-14
-- State: Stages 1–4 covered for the current milestone; Stage 5 implementation not started
+- State: Stages 1–4 covered for the current milestone; Stage 5 implementation underway
 - Canonical principle: approved product/system direction does not imply blanket approval to implement roadmap slices
 
 ## 1. Problem and Evidence
@@ -24,9 +24,9 @@ This establishes a real workflow, explicit demand, and a strong cost constraint.
 ### Desired outcome and success metrics
 Long-term product behavior: provide a fresh weekly digest of strong, timely leads.
 
-Current milestone target: prove one complete fresh discovery run can produce:
-- 7 verified founder leads;
-- 3 verified organizer leads;
+Current milestone target: prove one complete fresh discovery run can fill a 10-slot founder-first digest: verified founders first, up to 7; verified organizers fill the remaining slots, with at least 2 organizer slots reserved (default 2, configurable). Never pad unavailable verified leads. Record the actual split and any shortfall.
+- Follow pending-lineup events on a run watch list with expected-announce and recheck dates. An organizer may qualify now; founders require official same-edition names in a later run.
+- On weekly runs, log the founder/organizer split, pending-event count, and shortfall reason. If verified founders remain under about 2 per week for 3–4 consecutive runs, revisit the founder channel.
 - at least 6 of 10 verified leads judged genuinely outreach-worthy by the coach, when 10 verified leads are available.
 
 Primary quality metric:
@@ -51,7 +51,7 @@ No reliable baseline for current manual research time has been measured yet. Do 
 A bounded, evidence-driven discovery pipeline can independently find timely, verifiable prospects without the user supplying event names or URLs, and can produce a useful shortlist at very low operating cost.
 
 Evidence supporting the hypothesis:
-- one fresh run discovers up to 7 verified founders + 3 verified organizers under the agreed rules;
+- one fresh run assembles up to 10 verified leads under the founder-first, organizer-fill rule;
 - no weak leads are added merely to hit 10;
 - at least 60% of reviewed verified leads are marked useful when 10 are available;
 - failures can be attributed to discovery, retrieval, extraction, qualification, ranking, or final usefulness rather than remaining opaque;
@@ -101,6 +101,8 @@ A founder is **Verified** only when:
 
 A company-only lineup may support discovery of an event but does not verify an individual presenter.
 
+Student capstone or class pitch teams do not count as verified founders unless official evidence shows they pitch a venture, rather than only a course project.
+
 ### Organizer verification rule
 An organizer is **Verified** only when official evidence establishes:
 - who operates/runs the event or program;
@@ -108,12 +110,16 @@ An organizer is **Verified** only when official evidence establishes:
 - an in-window upcoming event date;
 - a public organizer contact route.
 
-A promising upcoming organizer/event with unresolved required fields may appear as **Provisional**, but Provisional rows do not count toward the 3 verified-organizer target.
+A promising upcoming organizer/event with unresolved required fields may appear as **Provisional**, but Provisional rows do not fill verified digest slots.
 
 ### Event-edition integrity
 Evidence across multiple pages must refer to the same event edition. Never combine a presenter from one edition with the date/contact/organizer of another.
 
 Create an internal opportunity/event entity before final lead qualification so evidence can be attached to a specific edition.
+
+Keep qualifying events with pending presenter lineups on a run watch list with expected-announce and/or recheck dates. Their organizers may qualify immediately under the organizer rule; founders require later official same-edition presenter evidence. This output is in scope before recurring scheduling (D23).
+
+Reachability evidence (004): official finalist, winner, or news pages may name presenters after an application page goes live. Later evidence retrieval should follow official links at most two levels deep. Company-only pages do not verify individuals; mismatched edition years are never joined. Incubator/program pages are discovery routes to dated demo days, not direct founder sources. Bot-blocked and login-walled pages need alternate official evidence; names found only on off-site social pages do not count under the current rule. Public business contact routes are allowed, private contact information is not.
 
 ### Desired output
 For each lead, when supported:
@@ -261,14 +267,14 @@ Approved architecture intent: small provider boundary conceptually equivalent to
 Normalize only fields downstream logic needs. Do not over-generalize provider APIs.
 
 ### Search provider decision
-Final provider is **unresolved pending benchmark evidence**.
+Raj selected **Exa as primary and Serper as fallback** after the first-pass v2 comparison (D16). Brave is dropped. Weekly held-out results may warrant re-evaluation.
 
-Initial providers to compare fairly:
+Providers compared in Slice 2:
 - Exa — current favorite/hypothesis;
 - Brave Search API — existing credits and low-cost independent index;
 - Serper — Google-backed challenger, useful for obscure/site-specific discovery.
 
-The benchmark, not preference or vendor marketing, decides primary/fallback selection.
+The benchmark and observed operational constraints informed the approved primary/fallback selection; the small v2 sample and unjudged pooled URLs limit certainty.
 
 ### Retrieval/extraction technology
 Approved intended hierarchy:
@@ -301,10 +307,11 @@ Prefer deterministic enforcement for strict rules, including:
 - event-edition matching;
 - Verified/Provisional/Rejected state rules;
 - duplicate handling;
-- founder/organizer target counts;
 - evidence requirements.
 
 Use LLM judgment only for semantic interpretation that deterministic rules cannot reliably perform.
+
+Presentation (Slice 7) applies the deterministic founder-first digest mix after qualification and ranking; mix targets do not determine lead validity.
 
 ### Ranking
 Only sufficiently qualified candidates enter final ranking.
@@ -366,7 +373,7 @@ Top-of-funnel discovery remains the highest-risk unknown. The first implementati
 | D02 | MVP lead segment = newer founders preparing for pitches + relevant organizers | Approved | Crisp, time-sensitive, verifiable test segment | Low–Medium | MVP succeeds or evidence shows segment is too sparse |
 | D03 | Narrow validation scope must not deeply hard-code the core pipeline | Approved | Supports future reuse without building generic platform now | Medium | Core boundaries prove artificial/expensive |
 | D04 | First milestone = prove one fresh end-to-end run before weekly repeatability | Approved | Smallest credible product proof | Low | First run succeeds |
-| D05 | Target = 7 verified founders + 3 verified organizers | Approved | Concrete pilot target | Low | User/pilot requirement changes |
+| D05 | Ten slots: verified founders first up to 7; organizers fill remaining slots with at least 2 reserved (default 2, configurable); never pad | Approved, amended by 004 | Founder preference with useful organizer fill; list assembly only in Slice 7 | Low | Weekly split/shortfall evidence |
 | D06 | Initial coach-quality threshold = >=60% Useful among reviewed verified leads | Approved | Measures commercial usefulness separately from technical validity | Low | Pilot feedback suggests different threshold |
 | D07 | Canada first, U.S. fallback; tech and non-tech eligible | Approved | Matches user context while preserving enough supply | Low | Discovery supply proves insufficient |
 | D08 | Qualifying opportunity window = +7 days through +6 months | Approved | Provides actionable lead time | Low | User changes outreach timing |
@@ -377,14 +384,14 @@ Top-of-funnel discovery remains the highest-risk unknown. The first implementati
 | D13 | Core pipeline stages remain separable for diagnostics | Approved | Needed for credible evaluation and debugging | Medium | Proven unnecessary complexity |
 | D14 | Search provider is abstracted behind a small adapter | Approved | Allows fair provider comparison/replacement | Low–Medium | One provider becomes fixed for strong reason |
 | D15 | Search benchmark candidates = Exa, Brave, Serper | Approved for evaluation | Current cost/quality candidates; winner not preselected | Low | Provider unavailable/pricing materially changes |
-| D16 | Final primary/fallback search provider | Unresolved | Must be selected from benchmark evidence | — | Slice 2 results |
+| D16 | Exa primary, Serper fallback; Brave dropped | Approved 2026-11-14 | Exa led v2 first-pass union recall (9/14 overall, 6/7 live CA); Serper was 6/14 and 4/7; Brave was 6/14 and 3/7 with result-retention risk. Small set; revisit with held-out trends. | Low | Weekly held-out results or pricing change |
 | D17 | TinyFetch default retrieval; Firecrawl advanced fallback | Approved intent | Optimizes capability/reliability/cost | Low–Medium | Measured extraction failures/cost change |
 | D18 | Hybrid deterministic + LLM extraction/qualification | Approved | Strict rules stay deterministic; semantic ambiguity uses LLM | Medium | Evaluation shows another split is superior |
 | D19 | Exact LLM/model | Unresolved | Not needed yet | — | First slice requiring LLM |
 | D20 | Exact frontend framework | Unresolved | UI not needed for early benchmark slices | — | UI slice begins |
 | D21 | Exact database | Unresolved | Persistence not needed for early benchmark slices | — | Persistence becomes necessary |
 | D22 | Hosting/auth/deployment | Deferred | Premature for one-run validation | — | Pilot UI/deployment slice |
-| D23 | Recurring scheduling | Deferred | Weekly repeatability comes after one-run proof | Low | End-to-end validation succeeds |
+| D23 | Recurring scheduling | Deferred | Run-level watch-list output may be designed now; automated weekly rechecks wait for repeatability | Low | End-to-end validation succeeds |
 | D24 | Feedback-driven rerun/learning | Deferred V2 | Useful but not required for MVP proof | Medium | Review loop produces sufficient data |
 
 ---
@@ -484,7 +491,7 @@ Do not equate replay performance with live discovery quality.
 ### End-to-end milestone acceptance
 For the current milestone, success ultimately requires:
 - a fresh live run;
-- up to 7 Verified founders + 3 Verified organizers under the agreed rules;
+- a founder-first digest of up to 10 Verified leads, with organizers filling unused founder slots and at least 2 organizer slots reserved by default;
 - no padded weak leads;
 - >=60% Useful among reviewed verified leads when 10 verified leads are available;
 - stage-level failure visibility;
@@ -533,8 +540,9 @@ These slices define the planned build path. They are **not blanket implementatio
 
 ### Slice 7 — Ranking and Digest Assembly
 - Rank qualified candidates using explainable factors.
-- Assemble 7 Founder + 3 Organizer target when enough verified candidates exist.
+- Assemble 10 slots deterministically: founders first up to 7, organizers in remaining slots, at least 2 organizer slots reserved by default (configurable).
 - Never pad weak results.
+- Log the actual founder/organizer split, pending-event count, and any shortfall reason.
 
 ### Slice 8 — User-Facing Results
 - Build lightweight web UI.
@@ -572,7 +580,8 @@ Do not add speculative infrastructure beyond observed needs.
 | --- | --- | --- |
 | Benchmark coverage beyond v2 | V2 adds Canadian editions and a weekly held-out protocol, but has no live Canadian founder positives as of its 2026-11-14 freeze | Revisit as named presenters publish and held-out trend accumulates |
 | Slice 2 query families and K/budget | Frozen in work record 002: 58 queries per provider, top 10, US$5 total cap | Revisit only with Raj's approval before a revised comparison |
-| Final search provider + fallback | Empirical decision | Slice 2 benchmark results |
+| Search provider reassessment | First-pass decision has small-n limits | Weekly held-out trend or material price/terms change |
+| Student capstone/class pitch teams | Do not count as verified founders without official evidence that they pitch a venture rather than only a course project | Revisit on user decision |
 | Exact LLM/model | Not needed for benchmark setup/search provider test | First extraction/semantic qualification slice |
 | Exact frontend framework | UI not needed yet | Slice 8 proposal |
 | Exact database | Persistence not needed yet | First slice requiring durable state |
@@ -608,7 +617,7 @@ Completion requires observed evidence that:
 3. discovery can run without user-supplied event seeds;
 4. evidence remains tied to correct event editions;
 5. qualification rules are enforced and traceable;
-6. a fresh live run returns only legitimately qualifying leads, up to the 7/3 target;
+6. a fresh live run returns only legitimately qualifying leads in a founder-first digest of up to 10, with at least 2 organizer slots reserved by default and no padding;
 7. no weak leads are padded into the result set;
 8. coach review produces a measurable usefulness rate;
 9. stage-level failures, latency, and cost are recorded;

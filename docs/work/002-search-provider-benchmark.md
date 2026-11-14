@@ -1,6 +1,6 @@
 # 002 — Search Provider Benchmark
 
-- Status: Query design approved and frozen on 2026-11-14; provider implementation and calls have not started.
+- Status: In progress. Provider decision D16 is approved, but full pooled precision and new-discovery judging in the acceptance criteria remains incomplete.
 - Proposal depth and reason: Standard. The comparison will shape the discovery provider choice and incur external API usage, but it adds no product-facing behavior or persistent user data.
 - Source requirements: `docs/PROJECT.md` §6–7, `docs/STATUS.md`, frozen `docs/benchmark/v1/` and `docs/benchmark/v2/`, work records 001 and 003, and Amendment A (`002-amendment-A.md`).
 
@@ -104,6 +104,10 @@ Hard cap: **US$5 total across all three providers**, including retries, unless R
 
 Keep keys in local environment/approved secret storage, never in source, saved responses or logs. Search returns public web material; store only business/event facts needed for adjudication.
 
+## Security Impact
+
+The three API keys are read only from the ignored local `.env`; `.env.example` and `.gitignore` were already committed before implementation. No key values are printed or saved. The runner redacts any accidental key occurrence in serialized provider responses, verifies HTTPS certificates against the operating-system CA bundle, and counts every attempt against the US$5 cap. Local run artifacts and the installed vendor skill are gitignored. No deployment or remote write is part of this slice.
+
 ## Risks and reversal
 
 Search indexes, rankings and event pages change; date and save every run. V2 has limited live founder coverage (the only live founder positives are U.S., from Hen Hatch) and its replay split is not historical index replay. The 58-query design may still favour some wording or regions; a later comparison may use a newly approved query revision, but all providers must be rerun under that same revision. Locale parameters can drift as APIs change; the freeze-time verification step is required for that reason. The adapters and local artifacts can be replaced without changing product data or a production system.
@@ -113,12 +117,34 @@ Search indexes, rankings and event pages change; date and save every run. V2 has
 - Benchmark: frozen v2, SHA-256 `d7efe922893222b8e60e9847d548190098baedc66f2fb7c1a89402561c9c7c81`; v1 separately for continuity, SHA-256 `bb6621d6e9406864ab49d83182a35c8f165c7ea46f4746f9fd08dfb996d1032a`.
 - Baseline: no provider run yet.
 - Pass threshold: none established; selection is evidence-based, and an inconclusive result is allowed, including when live recall differs by only one or two editions.
-- Approval: On 2026-11-14 Raj instructed Codex to skip the Serper pre-freeze parameter check and freeze the revision-2 query design. This approves Amendment A's 58 exact query strings and US$5 total cap for the frozen query artifact. It does not authorize a provider run or a purchase. Provider implementation/run approval remains pending.
+- Approval: On 2026-11-14 Raj instructed Codex to skip the Serper pre-freeze parameter check and freeze the revision-2 query design. On 2026-11-14 Raj explicitly approved Slice 2 implementation and the provider run, using the frozen query file, benchmark v2, and US$5 total cap. He required the `build-with-exa` skill, Exa plain search with ten metadata-only results, and a stop after offline scoring before any provider recommendation. No purchase, push, or Slice 3 work is authorized.
 - Commit, push and deployment: not authorized.
 
 ## Results
 
-The 58 queries were copied unchanged from Appendix A into `docs/benchmark/search-provider/queries-v1.tsv`; IDs q-001 through q-058 are consecutive, unique, and total 52 English plus 6 French. SHA-256 is recorded above. No provider calls were made.
+The 58 queries were copied unchanged from Appendix A into `docs/benchmark/search-provider/queries-v1.tsv`; IDs q-001 through q-058 are consecutive, unique, and total 52 English plus 6 French. SHA-256 is recorded above. No query, locale, or cap change was needed after the pre-code API/pricing check.
+
+### Actual changes and run
+
+- Added `scripts/search_provider_benchmark.py` (minimal metadata-only Exa search, Brave Web Search, Serper organic search; rotating order; one retry at most; incremental raw response saving; US$5 cap) and `scripts/score_search_provider_benchmark.py` (offline exact-cited-page scoring and pooled URL judging export), with focused tests in `tests/test_search_provider_benchmark.py`.
+- Installed the user-requested `build-with-exa` skill locally using `npx skills add exa-labs/agent-skills --skill "build-with-exa"`; its content and `skills-lock.json` are not committed. Exa `/search` requests used `query`, `numResults: 10`, and `userLocation` only—no `contents`, synthesis, date or domain filters.
+- Official current references confirmed Exa `numResults`/`userLocation` and free credits ([search API](https://exa.ai/docs/reference/search), [pricing](https://exa.ai/pricing)); Brave `country`/`search_lang`/`count` and $5 monthly credit ([Web Search](https://api-dashboard.search.brave.com/api-reference/web/search/get), [pricing](https://api-dashboard.search.brave.com/app/plans?tab=normal)); and Serper's public site confirmed 2,500 free signup queries ([pricing](https://serper.dev/)). Its official playground script uses `gl`, `hl`, and `num` in search request construction. Actual account balances were unavailable from the search APIs.
+- A first diagnostic attempt failed local Python TLS certificate verification before connecting to any provider and was marked aborted. The runner was fixed to use the operating-system CA file with certificate verification still enabled. The full fresh run `artifacts/search-provider/20261114T131952Z/` completed 174 successful requests: 58 per provider, no retries. One Serper query returned 9 results and one Exa query returned 8; other successful queries returned 10.
+- The run's list-price reservation was **US$0.754 total** ($0.406 Exa, $0.290 Brave, $0.058 Serper), below the US$5 cap. Exa responses reported estimated cost of $0.406. Serper responses reported 58 credits consumed. Brave and Serper did not return dollar charges or remaining free-credit balances, so their actual billed cash cost cannot be confirmed from these API responses; listed amounts are usage estimates. No credits were purchased.
+
+### Offline scoring and handoff
+
+- Exact normalized cited-page matching yielded v2 union recall@10 of Exa 9/14, Brave 5/14, and Serper 5/14. Live Canadian exact hits were 6/7, 2/7, and 4/7 respectively. These are lower bounds pending manual review of other result pages, not final comparative judgments.
+- `report.md`, `metrics.json`, `edition_hits.csv`, `per_query_hits.csv`, and `query_group_summary.csv` contain the per-edition matrix, union and per-query results, split/geography/intent breakdowns, latency, costs and case diagnostics. V1 is a separate continuity check: 2/4, 0/4, 2/4 exact eligible-edition hits.
+- `pooled_unique_urls.csv` contains 968 deduplicated URLs with blank relevance/edition fields for Raj's judgment. `possible_same_site_hits.csv` contains 129 result instances from cited sites that require review before credit. Precision, useful new discoveries and any provider recommendation remain pending.
+- Raj approved D16 on 2026-11-14: **Exa primary, Serper fallback, Brave dropped**. The first-pass same-site adjudication in `artifacts/search-provider/20261114T131952Z/judgments/recall_after_first_pass.md` gives union recall@10 of Exa 9/14, Brave 6/14, Serper 6/14; live Canadian recall 6/7, 3/7, 4/7 respectively. Exa's two-edition live-Canadian lead over Serper remains inconclusive under the preregistered small-sample rule; the decision also uses Exa's coverage and Serper's lower price as a resilience fallback. Brave's retention terms are an additional reason to drop it. No live Canadian founder positives are in v2.
+- The 968-URL pool is still unjudged outside the first-pass subset; precision and new discoveries remain unknown. Thus the full Slice 2 acceptance criteria are **not met**, despite the approved provider decision. Follow-up judging may finish this record, but Slice 3 is separately approved to proceed using D16.
+
+### Verification, limits and residual risk
+
+- `python3 -m unittest discover -s tests -v`: 3 focused tests passed (request shapes, empty results, normalization, pooled deduplication, recall and deterministic offline rescoring). Both scripts compiled; `git diff --check` passed. A scan found zero API key values outside `.env`.
+- The exact-source scorer does not credit a different official page for the same edition until a person judges it. The 968-URL pool also has not been judged, so precision and newly found eligible editions are unknown. V2 has no live Canadian founder positives, and this run is dated 2026-11-14.
+- Brave's [published terms](https://api-dashboard.search.brave.com/documentation/resources/terms-of-service) appear to restrict retaining search results beyond transient operation and using them to benchmark AI services. The raw and pooled artifacts remain local and gitignored; clarify permissible retention before committing, sharing, or extending their use.
 
 ## Appendix A. Frozen query strings (n = 58)
 
